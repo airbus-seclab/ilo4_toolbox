@@ -1,0 +1,112 @@
+> parsing .secinfo entries:
+
+             .romstart - base 0xf8000000 - size 0x00000000 - access : 0x4
+               .romend - base 0xf8000000 - size 0x00000000 - access : 0x4
+             .ramstart - base 0x20001000 - size 0x00000000 - access : 0x4
+              .picbase - base 0x20001000 - size 0x00000000 - access : 0x4
+               .vector - base 0x20001000 - size 0x000000a8 - access : 0x1
+          .probe_agent - base 0x200010a8 - size 0x00000038 - access : 0xc
+             .fasttext - base 0x20004000 - size 0x00001f6c - access : 0x9
+                .rtext - base 0x20005f6c - size 0x00000000 - access : 0x4
+                 .text - base 0x20005f6c - size 0x000b0a9c - access : 0x1
+           .loadertext - base 0x200b6a08 - size 0x00000000 - access : 0x4
+              .syscall - base 0x200b6a08 - size 0x00000008 - access : 0x1
+            .intercall - base 0x200b6a10 - size 0x00000000 - access : 0x4
+            .interfunc - base 0x200b6a10 - size 0x00000006 - access : 0x1
+              .fixaddr - base 0x200b6a16 - size 0x00000000 - access : 0x4
+              .fixtype - base 0x200b6a16 - size 0x00000000 - access : 0x4
+              .secinfo - base 0x200b6a18 - size 0x0000067c - access : 0x2
+               .robase - base 0x200b7094 - size 0x00000000 - access : 0x4
+             .execname - base 0x200b7094 - size 0x00000029 - access : 0x2
+               .sdata2 - base 0x200b70c0 - size 0x00000000 - access : 0x4
+               .rodata - base 0x200b70c0 - size 0x00005b54 - access : 0x2
+           .initrodata - base 0x200bcc14 - size 0x00000008 - access : 0x2
+              .pidbase - base 0x200bcc20 - size 0x00000000 - access : 0x4
+              .sdabase - base 0x200bcc20 - size 0x00000000 - access : 0x4
+                .sdata - base 0x200bcc20 - size 0x00000000 - access : 0x4
+                 .sbss - base 0x200bcc20 - size 0x00000000 - access : 0xc
+                 .data - base 0x200bcc20 - size 0x00004818 - access : 0xa
+            .dbsockemu - base 0x200c1438 - size 0x00000000 - access : 0x4
+                  .bss - base 0x200c1438 - size 0x002f3689 - access : 0xc
+             .entities - base 0x203b4ad0 - size 0x00020000 - access : 0xc
+      .lastsectorremap - base 0x203d4ad0 - size 0x00000400 - access : 0xc
+        .mr___flashbuf - base 0x203d4ed0 - size 0x00020000 - access : 0xc
+                 .heap - base 0x203f4ed0 - size 0x002c0000 - access : 0xc
+             .noclrbss - base 0x206b4ed0 - size 0x00000094 - access : 0xc
+                .stack - base 0x206b4f70 - size 0x00004000 - access : 0xc
+             .fiqstack - base 0x206b8f70 - size 0x00000800 - access : 0xc
+          .debugbuffer - base 0x206b9770 - size 0x00100000 - access : 0xc
+             .eventlog - base 0x207b9770 - size 0x00000000 - access : 0xc
+               .ramend - base 0x207ba000 - size 0x00000000 - access : 0x4
+             .download - base 0x207ba000 - size 0x01a00000 - access : 0xc
+             .mr__core - base 0x221ba000 - size 0x00000000 - access : 0xc
+            .ahbmemory - base 0xa0000000 - size 0x00000000 - access : 0x4
+               .kstack - base 0xa0000000 - size 0x00004000 - access : 0xc
+            .pagetable - base 0xa0004000 - size 0x00004000 - access : 0xc
+        .ptvectorremap - base 0xa0008000 - size 0x00000400 - access : 0xc
+        .armspecialbss - base 0xa0008400 - size 0x00000490 - access : 0xc
+             .fastdata - base 0xa1000000 - size 0x00000330 - access : 0xc
+
+> setting-up segments:
+
+  1. Creating a new segment  (20001000-200010A8) ... ... OK
+     Additional segment      (200010A8-200C1438) ...
+     Deleting segment        (200010A8-200C1438) ...
+  1. Creating a new segment  (200010A8-200C1438) ... ... OK
+  2. Creating a new segment  (200010A8-200010E0) ... ... OK
+     Additional segment      (200010E0-200C1438) ...
+     Deleting segment        (200010E0-200C1438) ...
+  2. Creating a new segment  (200010E0-200C1438) ... ... OK
+  3. Creating a new segment  (20004000-20005F6C) ... ... OK
+     Additional segment      (20005F6C-200C1438) ...
+  4. Creating a new segment  (20005F6C-200C1438) ... ... OK
+  5. Creating a new segment  (20005F6C-200B6A08) ... ... OK
+     Additional segment      (200B6A08-200C1438) ...
+     Deleting segment        (200B6A08-200C1438) ...
+  5. Creating a new segment  (200B6A08-200C1438) ... ... OK
+  6. Creating a new segment  (200B6A08-200B6A10) ... ... OK
+     Additional segment      (200B6A10-200C1438) ...
+     Deleting segment        (200B6A10-200C1438) ...
+  6. Creating a new segment  (200B6A10-200C1438) ... ... OK
+  7. Creating a new segment  (200B6A10-200B6A16) ... ... OK
+     Additional segment      (200B6A16-200C1438) ...
+     Deleting segment        (200B6A16-200C1438) ...
+  7. Creating a new segment  (200B6A16-200C1438) ... ... OK
+  8. Creating a new segment  (200B6A18-200B7094) ... ... OK
+     Additional segment      (200B7094-200C1438) ...
+  9. Creating a new segment  (200B7094-200C1438) ... ... OK
+ 10. Creating a new segment  (200B7094-200B70BD) ... ... OK
+     Additional segment      (200B70BD-200C1438) ...
+     Deleting segment        (200B70BD-200C1438) ...
+ 10. Creating a new segment  (200B70BD-200C1438) ... ... OK
+ 11. Creating a new segment  (200B70C0-200BCC14) ... ... OK
+     Additional segment      (200BCC14-200C1438) ...
+ 12. Creating a new segment  (200BCC14-200C1438) ... ... OK
+ 13. Creating a new segment  (200BCC14-200BCC1C) ... ... OK
+     Additional segment      (200BCC1C-200C1438) ...
+     Deleting segment        (200BCC1C-200C1438) ...
+ 13. Creating a new segment  (200BCC1C-200C1438) ... ... OK
+ 14. Creating a new segment  (200BCC20-200C1438) ... ... OK
+ 15. Creating a new segment  (200C1438-203B4AC1) ... ... OK
+ 16. Creating a new segment  (203B4AD0-203D4AD0) ... ... OK
+ 17. Creating a new segment  (203D4AD0-203D4ED0) ... ... OK
+ 18. Creating a new segment  (203D4ED0-203F4ED0) ... ... OK
+ 19. Creating a new segment  (203F4ED0-206B4ED0) ... ... OK
+ 20. Creating a new segment  (206B4ED0-206B4F64) ... ... OK
+ 21. Creating a new segment  (206B4F70-206B8F70) ... ... OK
+ 22. Creating a new segment  (206B8F70-206B9770) ... ... OK
+ 23. Creating a new segment  (206B9770-207B9770) ... ... OK
+ 24. Creating a new segment  (207BA000-221BA000) ... ... OK
+ 25. Creating a new segment  (A0000000-A0004000) ... ... OK
+ 26. Creating a new segment  (A0004000-A0008000) ... ... OK
+ 27. Creating a new segment  (A0008000-A0008400) ... ... OK
+ 28. Creating a new segment  (A0008400-A0008890) ... ... OK
+ 29. Creating a new segment  (A1000000-A1000330) ... ... OK
+
+> parsing BSS entries:
+
+  memory area at 0x200bcc20 - size 0x00000000 - init value 0x00 - ".data"
+  memory area at 0x200c1438 - size 0x002f3689 - init value 0x00 - ".bss"
+  memory area at 0x203b4ad0 - size 0x00020000 - init value 0x00 - ".entities"
+
+[+] job done captain!

@@ -1,0 +1,745 @@
+>python ilo5_extract.py ilo5_110.bin extract > ilo5_extract.log
+
+[+]  iLO Bootstrap header :
+  > img_magic              : HPIMAGE
+  > version major      : 0x1
+  > version minor      : 0x1
+  > field_A            : 0x00
+  > device id          :
+0000  9d 7b 31 2f e3 c9 76 4d bf f6 b9 d0 d0 85 a9 52   .{1/..vM.......R
+
+  > field_1C            : 0x1
+  > field_20            : 0x0
+  > field_24            : 0x0
+  > field_28            : 0x0
+  > field_2C            : 0x0
+  > field_30            : 0x0
+  > field_34            : 0x0
+  > field_38            : 0x0
+  > field_3C            : 0x70607e1
+  > version             : 1.10
+  > name                : iLO 5
+  > gap
+
+
+
+[+] iLO Bootstrap footer 0:
+  > module                  : Secure Micro Boot 1.01
+  > fw_magic                : 0x4edd411a
+  > type                    : 0x2
+  > field_28                : 0x30000
+  > field_2C                : 0x4
+  > field_2C                : 0x4
+  > is_compressed           : 0x1
+  > field_34                : 0x0
+  > field_38                : 0xb86
+  > field_3C                : 0x8000
+  > field_40                : 0x0
+  > decompressed_checksum   : 0xe88c2109
+  > compressed_size         : 0x8000
+  > decompressed_size       : 0x8000
+  > field_50                : 0xffffffff
+  > field_54                : 0x0
+  > field_58                : 0x2
+  > field_5A                : 0x0
+  > compressed_checksum     : 0x5a2b1ac2
+  > field_60                : 0x0
+  > field_64                : 0x0
+  > field_68                : 0x0
+  > field_6C                : 0x0
+  > field_70                : 0x0
+  > field_74                : 0x0
+  > field_78                : 0x0
+  > field_7C                : 0x0
+  > copyright               : Copyright 2016 Hewlett Packard Enterprise Development, LP
+  > signature
+0000  7c c1 a8 fb cd fd 10 6b 62 aa 65 b8 71 cd 82 42   |......kb.e.q..B
+0010  48 f4 f3 77 05 ad 4b 7e 43 b6 ab c6 fc 9f 75 5c   H..w..K~C.....u.
+0020  72 c1 b5 9c 25 38 36 b5 53 76 9d 8a 92 e5 d8 3a   r...%86.Sv.....:
+0030  c4 3b f8 b1 6b 35 10 bb 9b 99 bc da 31 9c 6b 6a   .;..k5......1.kj
+0040  44 81 6f d1 21 43 61 80 c0 06 3a 33 f4 3c 9a b9   D.o.!Ca...:3.<..
+0050  58 97 3b 84 36 37 4b ae 36 88 d1 22 96 73 51 9c   X.;.67K.6..".sQ.
+0060  55 b8 0d fb 8b ab fd dc 2a 7b c8 e6 a8 d8 62 e8   U.......*{....b.
+0070  67 5b 3c 20 5e 92 60 5e a4 14 0d 02 97 53 98 74   g[< ^.`^.....S.t
+0080  5e 08 52 4a 48 7e c6 a2 a2 a9 b6 76 7f ea b4 a0   ^.RJH~.....v....
+0090  2f 71 da 00 79 2e ef fe 0e 2e 7f 53 d1 38 86 d4   /q..y......S.8..
+00a0  ba a1 66 a9 68 f3 b4 c1 57 39 53 59 d2 47 fe 10   ..f.h...W9SY.G..
+00b0  63 b2 56 d2 0d c5 e3 4e 54 92 91 ff 1f a9 db 3f   c.V....NT......?
+00c0  23 2f 65 65 44 d9 47 98 c7 fa 72 91 d5 37 38 26   #/eeD.G...r..78&
+00d0  eb ba 16 e2 f6 b7 a1 73 88 94 bc e3 c1 bd 36 17   .......s......6.
+00e0  61 5a ed e8 a3 31 a5 e8 81 6d 75 6e a2 fb db 38   aZ...1...mun...8
+00f0  ed 77 b3 22 41 1d b3 be f4 ad b6 c8 17 91 51 1f   .w."A.........Q.
+0100  5b 00 bf 1d 3e d8 fa 97 bf 92 c0 f5 dd fa 47 76   [...>.........Gv
+0110  85 be 0e 65 c6 aa 10 ce f2 f8 58 f5 76 46 74 39   ...e......X.vFt9
+0120  59 0e fa 7a c2 bc 82 32 8b 21 34 f6 c6 d8 32 e3   Y..z...2.!4...2.
+0130  78 ff a9 96 72 9a 79 d0 76 cf c1 ca 98 e8 1b 8d   x...r.y.v.......
+0140  77 75 fc 4d 12 9d 7b be 65 79 8d 1d 55 50 1a 97   wu.M..{.ey..UP..
+0150  7d 88 1d 93 7d 8e cd b1 9e c6 08 32 08 d5 92 59   }...}......2...Y
+0160  a0 81 e4 3f 00 6b e2 e2 b0 c1 9b 72 8b fc ca ad   ...?.k.....r....
+0170  32 32 36 30 f8 90 fd 30 e4 7c 44 41 f3 6a fa 67   2260...0.|DA.j.g
+0180  02 fa 19 e2 87 02 c5 46 4b 1f 2f b3 53 05 86 60   .......FK./.S..`
+0190  59 81 27 9d 6a 3a 03 f4 9d a5 5e 4d e1 0a ee 44   Y.'.j:....^M...D
+01a0  20 1c 64 2d 7d fa 4b 68 a2 5b 06 39 a0 29 84 78    .d-}.Kh.[.9.).x
+01b0  13 0c 2b 68 02 58 97 94 5c 60 15 b3 de 90 7c d3   ..+h.X...`....|.
+01c0  1a 38 6f 7f 15 c1 d4 63 7c 07 b3 2d 46 22 4b d8   .8o....c|..-F"K.
+01d0  2d 12 d3 18 43 c5 9b 3b bc 48 1f f0 82 e2 51 3b   -...C..;.H....Q;
+01e0  68 4d 07 1b 51 79 23 0a 5f 05 d8 f5 bb 4a 7f fd   hM..Qy#._....J..
+01f0  fa 55 53 17 38 6d 3e ad 83 79 42 70 8c 8e 83 17   .US.8m>..yBp....
+
+  > fw_magic_end       : 0x4edd4118
+
+
+
+[+] iLO Bootstrap footer 1:
+  > module                  : Secure Micro Boot 1.01
+  > fw_magic                : 0x4edd411a
+  > type                    : 0x2
+  > field_28                : 0x30000
+  > field_2C                : 0x4
+  > field_2C                : 0x4
+  > is_compressed           : 0x1
+  > field_34                : 0x0
+  > field_38                : 0xb86
+  > field_3C                : 0x5000
+  > field_40                : 0x0
+  > decompressed_checksum   : 0x8ce8238c
+  > compressed_size         : 0x4da8
+  > decompressed_size       : 0x4da8
+  > field_50                : 0xffffffff
+  > field_54                : 0x0
+  > field_58                : 0x2
+  > field_5A                : 0x0
+  > compressed_checksum     : 0x701cf623
+  > field_60                : 0x0
+  > field_64                : 0x0
+  > field_68                : 0x0
+  > field_6C                : 0x0
+  > field_70                : 0x0
+  > field_74                : 0x0
+  > field_78                : 0x0
+  > field_7C                : 0x0
+  > copyright               : Copyright 2016 Hewlett Packard Enterprise Development, LP
+  > signature
+0000  2d df 60 31 cb 44 fd 85 98 72 10 f8 47 9c d7 10   -.`1.D...r..G...
+0010  12 c9 a4 1b 90 18 25 b4 47 e7 1f a8 d8 f0 ad bf   ......%.G.......
+0020  4c 0b 97 8f 27 9f d5 f8 2d b4 e2 71 02 e0 69 1e   L...'...-..q..i.
+0030  ed 91 83 eb d7 f2 d6 c1 b0 ef 24 d7 f2 4d 4c a3   ..........$..ML.
+0040  b5 98 03 2e 03 ae a5 82 21 f2 09 cd f1 e6 31 a7   ........!.....1.
+0050  bf ef c4 7e 00 b5 70 25 58 ab a8 a7 33 ac 3e 73   ...~..p%X...3.>s
+0060  e3 e4 6a 0f 20 1c 6f ab bf 32 01 aa f4 57 9b 8d   ..j. .o..2...W..
+0070  45 c4 fa 01 b3 71 c8 ab 42 ad c8 35 8b 67 d4 c1   E....q..B..5.g..
+0080  e2 6f 3b bb b4 08 e5 cb 70 fb dd 6a 64 e0 e6 22   .o;.....p..jd.."
+0090  0d a8 c6 8a 0b 32 80 23 20 c4 8e f3 f8 82 24 05   .....2.# .....$.
+00a0  46 c5 83 c1 f3 13 e6 12 43 f2 c3 ce 31 8f a6 41   F.......C...1..A
+00b0  57 63 f3 db 2d 9a f0 7b 8c 2e 35 ed f5 00 0e e9   Wc..-..{..5.....
+00c0  d7 99 6f 57 24 28 f0 ef 7e 4c b3 ab c1 26 0c 5e   ..oW$(..~L...&.^
+00d0  ad 32 ec 76 51 ca 4a 62 24 5e 14 d1 67 ed c1 f3   .2.vQ.Jb$^..g...
+00e0  7d cd e8 8f e4 d2 8b 78 6e 71 b8 fd e2 64 cc e0   }......xnq...d..
+00f0  31 bc 93 83 01 a8 bc 76 e3 c2 c4 c0 b8 5a 7b 34   1......v.....Z{4
+0100  f3 46 58 f1 29 af 3d 1a 9e c0 56 8e 3e a2 b0 a9   .FX.).=...V.>...
+0110  50 6e 57 d6 a7 ae e6 a3 25 9c 5b b3 ae ad fb 6e   PnW.....%.[....n
+0120  da af 34 3c bb 08 f0 88 07 e9 14 4b 0b fb c6 50   ..4<.......K...P
+0130  10 6d af 42 b5 5b c7 7d 6d ef 33 d3 60 e7 18 66   .m.B.[.}m.3.`..f
+0140  cd 0a ae 7a 08 19 9b a4 ca 06 9d d6 b7 26 85 29   ...z.........&.)
+0150  40 c7 24 0b 67 a4 d7 06 60 dd ad 1b b9 dc af 5f   @.$.g...`......_
+0160  14 ff 19 b7 7b 84 73 c6 f4 23 9d 40 8b 7f 3e f4   ....{.s..#.@..>.
+0170  6a 24 a3 38 57 d7 9f 8a 6f de d7 76 a4 d4 f5 1c   j$.8W...o..v....
+0180  07 6a 95 49 d8 8d 97 25 b6 4d 78 b7 bd 18 09 68   .j.I...%.Mx....h
+0190  ac 57 d3 63 dc a5 db 6c 53 d2 14 72 eb c5 e6 37   .W.c...lS..r...7
+01a0  e5 4d 5b 70 94 a7 dd 2e 3c 63 91 ea d2 e5 9c 2d   .M[p....<c.....-
+01b0  23 19 b7 10 2f c2 03 1e 1e f2 39 b7 58 8c ba 94   #.../.....9.X...
+01c0  5f 3a da 93 62 7d bf bf 10 34 0a 25 5d 60 1a 78   _:..b}...4.%]`.x
+01d0  c2 b4 01 9a 1e 88 36 6b 68 a7 88 c7 c8 49 e1 87   ......6kh....I..
+01e0  8f a1 22 64 5f 58 5d 62 e4 ac c3 63 79 dc 73 6c   .."d_X]b...cy.sl
+01f0  da 87 07 ed ed b9 15 42 b2 ca d2 bc 2d 06 36 80   .......B....-.6.
+
+  > fw_magic_end       : 0x4edd4118
+
+
+
+[+] iLO target list: 1 element(s)
+    target 0x0
+0000  62 a6 64 47 42 b3 c7 4f 9c e9 25 8c 5d 99 e8 15   b.dGB..O..%.]...
+
+
+-------------------------------------------------------------------------------
+[+] iLO Header 0
+  > module                  : neba9 0.9.5
+  > fw_magic                : 0x4edd411a
+  > type                    : 0x2
+  > field_28                : 0x10000
+  > field_2C                : 0x4
+  > field_2C                : 0x4
+  > is_compressed           : 0x0
+  > field_34                : 0x0
+  > field_38                : 0x603d0bb6
+  > field_3C                : 0x0
+  > field_40                : 0x3508
+  > decompressed_checksum   : 0xc078ff1c
+  > compressed_size         : 0x3508
+  > decompressed_size       : 0x3508
+  > field_50                : 0xffffffff
+  > field_54                : 0x0
+  > field_58                : 0x2
+  > field_5A                : 0x0
+  > compressed_checksum     : 0x53200025
+  > field_60                : 0x0
+  > field_64                : 0x0
+  > field_68                : 0x0
+  > field_6C                : 0x0
+  > field_70                : 0x0
+  > field_74                : 0x0
+  > field_78                : 0x0
+  > field_7C                : 0x0
+  > copyright               : Copyright 2017 Hewlett Packard Enterprise Development, LP
+  > signature
+0000  7c ab 3f 24 a8 44 85 30 c2 b2 e7 88 6c 3b 58 90   |.?$.D.0....l;X.
+0010  69 29 13 9e 04 b7 54 1d 30 b5 d6 ad e5 dd d0 de   i)....T.0.......
+0020  03 ba d7 dc d2 ee 55 ee e9 21 72 cc 98 5c 80 57   ......U..!r....W
+0030  41 b0 4b fc a2 9c 9f f8 5c 75 e1 3a 2b 3c 81 d7   A.K......u.:+<..
+0040  1a 94 39 dc 49 e7 20 f9 51 a0 23 6b 1c 6a ac 62   ..9.I. .Q.#k.j.b
+0050  1d d8 ea 5b bc 7f a7 2a 9b 8e 5d 30 9d 70 17 e1   ...[...*..]0.p..
+0060  10 d4 63 94 5c 1b 21 8c 48 03 e5 89 d9 4c 4c 93   ..c...!.H....LL.
+0070  77 08 0c 71 31 24 6e a4 2f 01 ac 33 fd a5 29 92   w..q1$n./..3..).
+0080  5c 3b 37 67 00 c1 f3 05 5b 5b b8 f1 03 db a8 29   .;7g....[[.....)
+0090  92 cf f1 8f 6e 86 fd f1 70 0c cc 5c bd b1 39 fa   ....n...p.....9.
+00a0  10 0c 59 ca c7 5b e8 cc 82 e2 f8 2a c4 b4 e4 c7   ..Y..[.....*....
+00b0  61 c1 69 a9 be d9 33 b8 ec db 3e 94 4b a0 54 81   a.i...3...>.K.T.
+00c0  29 9e cc 20 29 07 05 85 30 1b f2 1b 9f 2c 4c d2   ).. )...0....,L.
+00d0  7d c0 93 d9 6c 7d 19 a2 f5 aa eb a5 ce bb 0b 75   }...l}.........u
+00e0  ba c6 b4 8c bc f5 51 67 a3 b1 f6 12 74 8e 9e 0f   ......Qg....t...
+00f0  14 00 b7 53 46 a2 34 6b fe 8f 07 1a 81 87 dd 73   ...SF.4k.......s
+0100  e4 e7 9e 10 51 e6 42 86 fe 72 b4 19 4e bc 87 44   ....Q.B..r..N..D
+0110  3c 3c f6 4a 3b 0f df 2d 65 32 9b 08 a7 77 6f 34   <<.J;..-e2...wo4
+0120  57 d7 ba d9 aa 3d f7 79 d9 8d 2d 08 51 d0 a4 38   W....=.y..-.Q..8
+0130  53 f2 f7 79 5a 5b 89 b7 95 5f f1 0d 4c d4 08 5d   S..yZ[..._..L..]
+0140  3b f8 a9 75 54 6b 8f 42 db 8b a8 9f 0a ef 49 cd   ;..uTk.B......I.
+0150  d8 a5 71 eb 4e 37 27 23 67 90 80 04 c6 7a c3 f9   ..q.N7'#g....z..
+0160  1c f4 2b e0 da b6 55 72 e0 65 5c 57 86 dd cf 84   ..+...Ur.e.W....
+0170  4f b2 a4 76 e7 94 12 9a 22 f6 12 39 71 6f 98 09   O..v...."..9qo..
+0180  39 87 d7 c6 f1 05 04 2b c2 e0 62 8a a0 f7 c5 a4   9......+..b.....
+0190  01 ee 5e 3c 2d 4c 6a 31 56 67 2d a2 5b 37 e2 59   ..^<-Lj1Vg-.[7.Y
+01a0  c0 ca 25 c4 77 95 63 85 a1 79 db 84 53 3a 11 ab   ..%.w.c..y..S:..
+01b0  d5 87 82 47 d1 09 52 12 14 df ef f0 da d5 2f 30   ...G..R......./0
+01c0  f6 c5 67 dc 61 d1 f9 15 5d cf 0c 7d f7 f8 78 f1   ..g.a...]..}..x.
+01d0  dd 92 cf 2c e7 d6 5e 43 1d 53 b2 f7 c6 fb 5f 86   ...,..^C.S...._.
+01e0  a7 96 50 9a 58 83 42 e4 95 4e 1b ec 42 7d 04 b6   ..P.X.B..N..B}..
+01f0  52 6e 6d e5 35 60 37 95 ee bf a8 e8 b6 03 20 33   Rnm.5`7....... 3
+
+  > fw_magic_end       : 0x4edd4118
+
+>> skip 0x4318
+
+>> skip 0x42f8
+
+-------------------------------------------------------------------------------
+[+] iLO Header 1
+  > module                  : neb926 0.3
+  > fw_magic                : 0x4edd411a
+  > type                    : 0x2
+  > field_28                : 0x20000
+  > field_2C                : 0x4
+  > field_2C                : 0x4
+  > is_compressed           : 0x0
+  > field_34                : 0x0
+  > field_38                : 0x678a8bac
+  > field_3C                : 0x0
+  > field_40                : 0xad0
+  > decompressed_checksum   : 0x4f73621c
+  > compressed_size         : 0xad0
+  > decompressed_size       : 0xad0
+  > field_50                : 0xffffffff
+  > field_54                : 0x0
+  > field_58                : 0x2
+  > field_5A                : 0x0
+  > compressed_checksum     : 0xecde3380
+  > field_60                : 0x0
+  > field_64                : 0x0
+  > field_68                : 0x0
+  > field_6C                : 0x0
+  > field_70                : 0x0
+  > field_74                : 0x0
+  > field_78                : 0x0
+  > field_7C                : 0x0
+  > copyright               : Copyright 2017 Hewlett Packard Enterprise Development, LP
+  > signature
+0000  81 90 d0 52 8b 51 70 5d 25 94 f5 15 07 cc c3 d1   ...R.Qp]%.......
+0010  2b 1f 09 a5 ab bb 51 60 3f a6 6d 4b 5b 22 e0 ec   +.....Q`?.mK["..
+0020  d8 61 d4 9d 6e 43 20 48 7d e8 a8 f6 15 42 d4 2d   .a..nC H}....B.-
+0030  c3 a4 e6 0e 0d 25 c2 e7 fb 8b a3 17 36 fd 56 5f   .....%......6.V_
+0040  03 a6 00 be 0d 6a 72 e3 d2 1d 26 4a 31 3d 06 62   .....jr...&J1=.b
+0050  aa a4 39 70 d0 5c f4 64 97 ed 80 c6 8c bc 14 9a   ..9p...d........
+0060  a6 d5 c4 55 e1 bf 4e 0a 9a de 95 6d ff d7 cc 8a   ...U..N....m....
+0070  6e 53 f4 0d f7 22 fd 1f 44 be f8 41 8e e8 1b 5e   nS..."..D..A...^
+0080  96 9d b2 9d 20 aa f4 9b 87 ab 2a f8 97 eb 73 7e   .... .....*...s~
+0090  a1 9e 59 23 8c 76 0e ab 91 3b 32 c6 b4 d2 a0 ee   ..Y#.v...;2.....
+00a0  e7 90 c0 52 f4 35 6f db 08 27 15 3c 12 06 12 5c   ...R.5o..'.<....
+00b0  f7 91 a5 67 67 ab b9 93 67 3f c1 2c 6d 91 b4 75   ...gg...g?.,m..u
+00c0  cf aa ea 84 83 68 85 45 72 78 4a 4c 3c 2b 45 99   .....h.ErxJL<+E.
+00d0  b0 f5 a2 ab ff f8 b2 e0 b0 2e f9 c3 a0 2f dd 70   ............./.p
+00e0  9c 4b 62 e3 e5 56 13 28 3c f4 54 fc aa 61 d2 1a   .Kb..V.(<.T..a..
+00f0  5d 31 93 54 c5 79 41 b7 4c 5c 22 7b d3 09 dd 64   ]1.T.yA.L."{...d
+0100  8f 4e ba 25 1a c0 ae 4f 0b 46 6a 35 1f 80 1b 07   .N.%...O.Fj5....
+0110  20 36 da 74 83 27 bb df 94 20 1a 46 c7 1d db ec    6.t.'... .F....
+0120  92 76 c1 21 a1 8d 5c b3 04 a7 3d 20 88 2c f7 4b   .v.!......= .,.K
+0130  ba 0e 7d 59 8f b1 90 c8 60 fb dd eb f0 de 60 84   ..}Y....`.....`.
+0140  c3 ff 1f 0f 35 2d 9a a0 1d 69 00 ae 39 c1 cf 89   ....5-...i..9...
+0150  ff d0 83 31 b5 42 e3 bd 9b 70 13 7f a6 6e 60 67   ...1.B...p...n`g
+0160  e3 77 71 72 f8 63 f0 58 d3 f6 b3 d1 b5 1e 8b bb   .wqr.c.X........
+0170  cd ea 3e 2c 37 0b cf cf 69 44 d1 7d d8 d5 84 2d   ..>,7...iD.}...-
+0180  28 f2 cb 64 4b 7e af 75 88 f2 5b 09 43 68 f6 40   (..dK~.u..[.Ch.@
+0190  3a aa 8b 4d 25 7e 8d 36 10 89 96 d3 49 f6 ef 04   :..M%~.6....I...
+01a0  c5 e5 02 a1 e9 63 fb 39 db 5e 00 93 89 96 07 97   .....c.9.^......
+01b0  e3 f6 8d df bb 91 89 53 ef 2c 7e 3e ac f6 89 ff   .......S.,~>....
+01c0  c8 9f 98 15 b8 06 9a e9 07 d6 44 52 52 d7 bb 75   ..........DRR..u
+01d0  b6 3b 3b d9 a4 5f bb f6 38 02 2d 76 9a 85 3f e2   .;;.._..8.-v..?.
+01e0  9f 1a c4 83 59 5c 72 d1 8f 27 86 f6 50 b9 12 0e   ....Y.r..'..P...
+01f0  fa 6d 4f a4 39 6a 6e 69 d1 2b 1a f9 a3 0f 2a cf   .mO.9jni.+....*.
+
+  > fw_magic_end       : 0x4edd4118
+
+>> skip 0x6d50
+
+>> skip 0x6d30
+
+-------------------------------------------------------------------------------
+[+] iLO Header 2
+  > module                  : neba9 0.9.5
+  > fw_magic                : 0x4edd411a
+  > type                    : 0x2
+  > field_28                : 0x10000
+  > field_2C                : 0x4
+  > field_2C                : 0x4
+  > is_compressed           : 0x0
+  > field_34                : 0x0
+  > field_38                : 0x603d0bb6
+  > field_3C                : 0x0
+  > field_40                : 0x3508
+  > decompressed_checksum   : 0xc078ff1c
+  > compressed_size         : 0x3508
+  > decompressed_size       : 0x3508
+  > field_50                : 0xffffffff
+  > field_54                : 0x0
+  > field_58                : 0x2
+  > field_5A                : 0x0
+  > compressed_checksum     : 0x53200025
+  > field_60                : 0x0
+  > field_64                : 0x0
+  > field_68                : 0x0
+  > field_6C                : 0x0
+  > field_70                : 0x0
+  > field_74                : 0x0
+  > field_78                : 0x0
+  > field_7C                : 0x0
+  > copyright               : Copyright 2017 Hewlett Packard Enterprise Development, LP
+  > signature
+0000  7c ab 3f 24 a8 44 85 30 c2 b2 e7 88 6c 3b 58 90   |.?$.D.0....l;X.
+0010  69 29 13 9e 04 b7 54 1d 30 b5 d6 ad e5 dd d0 de   i)....T.0.......
+0020  03 ba d7 dc d2 ee 55 ee e9 21 72 cc 98 5c 80 57   ......U..!r....W
+0030  41 b0 4b fc a2 9c 9f f8 5c 75 e1 3a 2b 3c 81 d7   A.K......u.:+<..
+0040  1a 94 39 dc 49 e7 20 f9 51 a0 23 6b 1c 6a ac 62   ..9.I. .Q.#k.j.b
+0050  1d d8 ea 5b bc 7f a7 2a 9b 8e 5d 30 9d 70 17 e1   ...[...*..]0.p..
+0060  10 d4 63 94 5c 1b 21 8c 48 03 e5 89 d9 4c 4c 93   ..c...!.H....LL.
+0070  77 08 0c 71 31 24 6e a4 2f 01 ac 33 fd a5 29 92   w..q1$n./..3..).
+0080  5c 3b 37 67 00 c1 f3 05 5b 5b b8 f1 03 db a8 29   .;7g....[[.....)
+0090  92 cf f1 8f 6e 86 fd f1 70 0c cc 5c bd b1 39 fa   ....n...p.....9.
+00a0  10 0c 59 ca c7 5b e8 cc 82 e2 f8 2a c4 b4 e4 c7   ..Y..[.....*....
+00b0  61 c1 69 a9 be d9 33 b8 ec db 3e 94 4b a0 54 81   a.i...3...>.K.T.
+00c0  29 9e cc 20 29 07 05 85 30 1b f2 1b 9f 2c 4c d2   ).. )...0....,L.
+00d0  7d c0 93 d9 6c 7d 19 a2 f5 aa eb a5 ce bb 0b 75   }...l}.........u
+00e0  ba c6 b4 8c bc f5 51 67 a3 b1 f6 12 74 8e 9e 0f   ......Qg....t...
+00f0  14 00 b7 53 46 a2 34 6b fe 8f 07 1a 81 87 dd 73   ...SF.4k.......s
+0100  e4 e7 9e 10 51 e6 42 86 fe 72 b4 19 4e bc 87 44   ....Q.B..r..N..D
+0110  3c 3c f6 4a 3b 0f df 2d 65 32 9b 08 a7 77 6f 34   <<.J;..-e2...wo4
+0120  57 d7 ba d9 aa 3d f7 79 d9 8d 2d 08 51 d0 a4 38   W....=.y..-.Q..8
+0130  53 f2 f7 79 5a 5b 89 b7 95 5f f1 0d 4c d4 08 5d   S..yZ[..._..L..]
+0140  3b f8 a9 75 54 6b 8f 42 db 8b a8 9f 0a ef 49 cd   ;..uTk.B......I.
+0150  d8 a5 71 eb 4e 37 27 23 67 90 80 04 c6 7a c3 f9   ..q.N7'#g....z..
+0160  1c f4 2b e0 da b6 55 72 e0 65 5c 57 86 dd cf 84   ..+...Ur.e.W....
+0170  4f b2 a4 76 e7 94 12 9a 22 f6 12 39 71 6f 98 09   O..v...."..9qo..
+0180  39 87 d7 c6 f1 05 04 2b c2 e0 62 8a a0 f7 c5 a4   9......+..b.....
+0190  01 ee 5e 3c 2d 4c 6a 31 56 67 2d a2 5b 37 e2 59   ..^<-Lj1Vg-.[7.Y
+01a0  c0 ca 25 c4 77 95 63 85 a1 79 db 84 53 3a 11 ab   ..%.w.c..y..S:..
+01b0  d5 87 82 47 d1 09 52 12 14 df ef f0 da d5 2f 30   ...G..R......./0
+01c0  f6 c5 67 dc 61 d1 f9 15 5d cf 0c 7d f7 f8 78 f1   ..g.a...]..}..x.
+01d0  dd 92 cf 2c e7 d6 5e 43 1d 53 b2 f7 c6 fb 5f 86   ...,..^C.S...._.
+01e0  a7 96 50 9a 58 83 42 e4 95 4e 1b ec 42 7d 04 b6   ..P.X.B..N..B}..
+01f0  52 6e 6d e5 35 60 37 95 ee bf a8 e8 b6 03 20 33   Rnm.5`7....... 3
+
+  > fw_magic_end       : 0x4edd4118
+
+>> skip 0x4318
+
+>> skip 0x42f8
+
+-------------------------------------------------------------------------------
+[+] iLO Header 3
+  > module                  : neb926 0.3
+  > fw_magic                : 0x4edd411a
+  > type                    : 0x2
+  > field_28                : 0x20000
+  > field_2C                : 0x4
+  > field_2C                : 0x4
+  > is_compressed           : 0x0
+  > field_34                : 0x0
+  > field_38                : 0x678a8bac
+  > field_3C                : 0x0
+  > field_40                : 0xad0
+  > decompressed_checksum   : 0x4f73621c
+  > compressed_size         : 0xad0
+  > decompressed_size       : 0xad0
+  > field_50                : 0xffffffff
+  > field_54                : 0x0
+  > field_58                : 0x2
+  > field_5A                : 0x0
+  > compressed_checksum     : 0xecde3380
+  > field_60                : 0x0
+  > field_64                : 0x0
+  > field_68                : 0x0
+  > field_6C                : 0x0
+  > field_70                : 0x0
+  > field_74                : 0x0
+  > field_78                : 0x0
+  > field_7C                : 0x0
+  > copyright               : Copyright 2017 Hewlett Packard Enterprise Development, LP
+  > signature
+0000  81 90 d0 52 8b 51 70 5d 25 94 f5 15 07 cc c3 d1   ...R.Qp]%.......
+0010  2b 1f 09 a5 ab bb 51 60 3f a6 6d 4b 5b 22 e0 ec   +.....Q`?.mK["..
+0020  d8 61 d4 9d 6e 43 20 48 7d e8 a8 f6 15 42 d4 2d   .a..nC H}....B.-
+0030  c3 a4 e6 0e 0d 25 c2 e7 fb 8b a3 17 36 fd 56 5f   .....%......6.V_
+0040  03 a6 00 be 0d 6a 72 e3 d2 1d 26 4a 31 3d 06 62   .....jr...&J1=.b
+0050  aa a4 39 70 d0 5c f4 64 97 ed 80 c6 8c bc 14 9a   ..9p...d........
+0060  a6 d5 c4 55 e1 bf 4e 0a 9a de 95 6d ff d7 cc 8a   ...U..N....m....
+0070  6e 53 f4 0d f7 22 fd 1f 44 be f8 41 8e e8 1b 5e   nS..."..D..A...^
+0080  96 9d b2 9d 20 aa f4 9b 87 ab 2a f8 97 eb 73 7e   .... .....*...s~
+0090  a1 9e 59 23 8c 76 0e ab 91 3b 32 c6 b4 d2 a0 ee   ..Y#.v...;2.....
+00a0  e7 90 c0 52 f4 35 6f db 08 27 15 3c 12 06 12 5c   ...R.5o..'.<....
+00b0  f7 91 a5 67 67 ab b9 93 67 3f c1 2c 6d 91 b4 75   ...gg...g?.,m..u
+00c0  cf aa ea 84 83 68 85 45 72 78 4a 4c 3c 2b 45 99   .....h.ErxJL<+E.
+00d0  b0 f5 a2 ab ff f8 b2 e0 b0 2e f9 c3 a0 2f dd 70   ............./.p
+00e0  9c 4b 62 e3 e5 56 13 28 3c f4 54 fc aa 61 d2 1a   .Kb..V.(<.T..a..
+00f0  5d 31 93 54 c5 79 41 b7 4c 5c 22 7b d3 09 dd 64   ]1.T.yA.L."{...d
+0100  8f 4e ba 25 1a c0 ae 4f 0b 46 6a 35 1f 80 1b 07   .N.%...O.Fj5....
+0110  20 36 da 74 83 27 bb df 94 20 1a 46 c7 1d db ec    6.t.'... .F....
+0120  92 76 c1 21 a1 8d 5c b3 04 a7 3d 20 88 2c f7 4b   .v.!......= .,.K
+0130  ba 0e 7d 59 8f b1 90 c8 60 fb dd eb f0 de 60 84   ..}Y....`.....`.
+0140  c3 ff 1f 0f 35 2d 9a a0 1d 69 00 ae 39 c1 cf 89   ....5-...i..9...
+0150  ff d0 83 31 b5 42 e3 bd 9b 70 13 7f a6 6e 60 67   ...1.B...p...n`g
+0160  e3 77 71 72 f8 63 f0 58 d3 f6 b3 d1 b5 1e 8b bb   .wqr.c.X........
+0170  cd ea 3e 2c 37 0b cf cf 69 44 d1 7d d8 d5 84 2d   ..>,7...iD.}...-
+0180  28 f2 cb 64 4b 7e af 75 88 f2 5b 09 43 68 f6 40   (..dK~.u..[.Ch.@
+0190  3a aa 8b 4d 25 7e 8d 36 10 89 96 d3 49 f6 ef 04   :..M%~.6....I...
+01a0  c5 e5 02 a1 e9 63 fb 39 db 5e 00 93 89 96 07 97   .....c.9.^......
+01b0  e3 f6 8d df bb 91 89 53 ef 2c 7e 3e ac f6 89 ff   .......S.,~>....
+01c0  c8 9f 98 15 b8 06 9a e9 07 d6 44 52 52 d7 bb 75   ..........DRR..u
+01d0  b6 3b 3b d9 a4 5f bb f6 38 02 2d 76 9a 85 3f e2   .;;.._..8.-v..?.
+01e0  9f 1a c4 83 59 5c 72 d1 8f 27 86 f6 50 b9 12 0e   ....Y.r..'..P...
+01f0  fa 6d 4f a4 39 6a 6e 69 d1 2b 1a f9 a3 0f 2a cf   .mO.9jni.+....*.
+
+  > fw_magic_end       : 0x4edd4118
+
+>> skip 0x6d50
+
+>> skip 0x6d30
+
+-------------------------------------------------------------------------------
+[+] iLO Header 4
+  > module                  : iLO 5 Kernel 00.09.41
+  > fw_magic                : 0x4edd411a
+  > type                    : 0x2
+  > field_28                : 0xb0000
+  > field_2C                : 0x5
+  > field_2C                : 0x5
+  > is_compressed           : 0x1
+  > field_34                : 0x0
+  > field_38                : 0xc17
+  > field_3C                : 0x0
+  > field_40                : 0x83f28
+  > decompressed_checksum   : 0xdd820f28
+  > compressed_size         : 0x83f28
+  > decompressed_size       : 0xd2fe4
+  > field_50                : 0xffffffff
+  > field_54                : 0x0
+  > field_58                : 0x1
+  > field_5A                : 0x0
+  > compressed_checksum     : 0xd64aa4fd
+  > field_60                : 0x0
+  > field_64                : 0x0
+  > field_68                : 0x0
+  > field_6C                : 0x0
+  > field_70                : 0x0
+  > field_74                : 0x0
+  > field_78                : 0x0
+  > field_7C                : 0x0
+  > copyright               : Copyright 2017 Hewlett Packard Enterprise Development, LP
+  > signature
+0000  d1 79 5f 8b ff 85 95 4a 15 7d ee 93 6a 7f 08 25   .y_....J.}..j..%
+0010  94 3d 92 fa 98 97 ac 84 f6 85 93 a5 73 7f fc 63   .=..........s..c
+0020  dd 5d 08 90 6d 1d 55 93 5d 23 01 ee 46 51 f9 16   .]..m.U.]#..FQ..
+0030  60 d2 39 d9 9e 09 32 e6 6b cc fe cc da 72 97 6f   `.9...2.k....r.o
+0040  cb 50 24 b2 fe 08 12 dd 7b 13 56 8f 10 51 c0 1c   .P$.....{.V..Q..
+0050  c2 1a 64 69 c0 c0 33 96 17 e0 2a c3 a8 40 de f1   ..di..3...*..@..
+0060  58 73 54 ec a8 96 86 17 00 6e 03 94 13 3f f9 cd   XsT......n...?..
+0070  df b7 59 97 69 48 99 b8 c7 6a 8a 57 c4 08 db 19   ..Y.iH...j.W....
+0080  2a 40 4e f6 86 82 98 e0 43 fc f7 7f e4 fd ac d0   *@N.....C.......
+0090  6e c9 ea b4 6d f6 71 ab 95 b5 e0 08 8a e4 9a 55   n...m.q........U
+00a0  e4 6e 02 c2 6a a5 87 d5 ec 49 19 13 84 d9 1c 12   .n..j....I......
+00b0  12 fc ef b0 d8 44 4b 8c 0b af 39 a3 76 61 ff 80   .....DK...9.va..
+00c0  4a b4 b2 45 f3 ef 02 05 06 c8 5c 13 f6 70 4a ed   J..E.........pJ.
+00d0  09 a9 b7 22 4c c8 0f 89 e4 6b a9 c2 73 f7 ae f2   ..."L....k..s...
+00e0  47 1f ae 7e 91 9a 0f 21 fa 14 88 8e f0 99 87 91   G..~...!........
+00f0  5c 90 53 5d 0b 11 53 5a 75 d1 29 d7 bc d5 b0 53   ..S]..SZu.)....S
+0100  de d5 94 d3 8a d2 42 16 1b cf 55 78 3b 3c d6 2d   ......B...Ux;<.-
+0110  2a fe 90 bb ec ed c3 14 7d 9a 8e 00 a7 1f 55 f6   *.......}.....U.
+0120  f0 e5 1b 7f c3 e5 d6 ef 04 c4 52 d3 1e cc 83 d6   ..........R.....
+0130  82 a6 4a c9 c3 fd 72 75 d8 42 f5 17 f2 b0 14 29   ..J...ru.B.....)
+0140  26 7a 21 5b a5 fd a0 d8 49 f0 7a f8 ba 70 29 ac   &z![....I.z..p).
+0150  f6 5e a7 51 3d a0 36 b1 32 90 01 e7 bf 16 c0 e7   .^.Q=.6.2.......
+0160  49 72 b7 dd 11 e2 0f 87 c9 2a 9e af 8b 1d 8e 78   Ir.......*.....x
+0170  4d 7e 04 71 54 f6 02 f8 17 f9 8d 7b 47 b2 7e 22   M~.qT......{G.~"
+0180  80 f3 9c 3e cd 16 dc 04 24 bc c1 e6 6e 19 db c5   ...>....$...n...
+0190  b8 e7 ec 5b 9c 39 f9 a7 05 74 40 97 ed 05 e1 78   ...[.9...t@....x
+01a0  e0 ef 72 46 a4 1f 46 86 a8 63 81 20 ed 11 e2 50   ..rF..F..c. ...P
+01b0  37 07 8f c4 a3 15 4d e7 d3 4c 60 72 dd 8a 46 40   7.....M..L`r..F@
+01c0  1e a9 9b 18 7b 70 03 62 28 03 8b c0 6e b2 f7 23   ....{p.b(...n..#
+01d0  00 0b 50 8b 3f dc 7b cb 20 af 75 ce 88 7e 7b 8e   ..P.?.{. .u..~{.
+01e0  0d f2 15 4b c4 67 4e ac e4 74 c8 2e bc 6d e5 45   ...K.gN..t...m.E
+01f0  0f 7c 92 08 a7 24 ac b4 c5 66 8f 46 8c 64 cf 3e   .|...$...f.F.d.>
+
+  > fw_magic_end       : 0x4edd4118
+output_size : 0x000d2fe4
+
+[+] Extracted ilo4.bin
+
+>> skip 0xb8f8
+
+>> skip 0xb8d8
+
+-------------------------------------------------------------------------------
+[+] iLO Header 5
+  > module                  : iLO 5 Kernel 00.09.41
+  > fw_magic                : 0x4edd411a
+  > type                    : 0x2
+  > field_28                : 0xb0000
+  > field_2C                : 0x5
+  > field_2C                : 0x5
+  > is_compressed           : 0x1
+  > field_34                : 0x0
+  > field_38                : 0xc17
+  > field_3C                : 0x0
+  > field_40                : 0x83f28
+  > decompressed_checksum   : 0xdd820f28
+  > compressed_size         : 0x83f28
+  > decompressed_size       : 0xd2fe4
+  > field_50                : 0xffffffff
+  > field_54                : 0x0
+  > field_58                : 0x1
+  > field_5A                : 0x0
+  > compressed_checksum     : 0xd64aa4fd
+  > field_60                : 0x0
+  > field_64                : 0x0
+  > field_68                : 0x0
+  > field_6C                : 0x0
+  > field_70                : 0x0
+  > field_74                : 0x0
+  > field_78                : 0x0
+  > field_7C                : 0x0
+  > copyright               : Copyright 2017 Hewlett Packard Enterprise Development, LP
+  > signature
+0000  d1 79 5f 8b ff 85 95 4a 15 7d ee 93 6a 7f 08 25   .y_....J.}..j..%
+0010  94 3d 92 fa 98 97 ac 84 f6 85 93 a5 73 7f fc 63   .=..........s..c
+0020  dd 5d 08 90 6d 1d 55 93 5d 23 01 ee 46 51 f9 16   .]..m.U.]#..FQ..
+0030  60 d2 39 d9 9e 09 32 e6 6b cc fe cc da 72 97 6f   `.9...2.k....r.o
+0040  cb 50 24 b2 fe 08 12 dd 7b 13 56 8f 10 51 c0 1c   .P$.....{.V..Q..
+0050  c2 1a 64 69 c0 c0 33 96 17 e0 2a c3 a8 40 de f1   ..di..3...*..@..
+0060  58 73 54 ec a8 96 86 17 00 6e 03 94 13 3f f9 cd   XsT......n...?..
+0070  df b7 59 97 69 48 99 b8 c7 6a 8a 57 c4 08 db 19   ..Y.iH...j.W....
+0080  2a 40 4e f6 86 82 98 e0 43 fc f7 7f e4 fd ac d0   *@N.....C.......
+0090  6e c9 ea b4 6d f6 71 ab 95 b5 e0 08 8a e4 9a 55   n...m.q........U
+00a0  e4 6e 02 c2 6a a5 87 d5 ec 49 19 13 84 d9 1c 12   .n..j....I......
+00b0  12 fc ef b0 d8 44 4b 8c 0b af 39 a3 76 61 ff 80   .....DK...9.va..
+00c0  4a b4 b2 45 f3 ef 02 05 06 c8 5c 13 f6 70 4a ed   J..E.........pJ.
+00d0  09 a9 b7 22 4c c8 0f 89 e4 6b a9 c2 73 f7 ae f2   ..."L....k..s...
+00e0  47 1f ae 7e 91 9a 0f 21 fa 14 88 8e f0 99 87 91   G..~...!........
+00f0  5c 90 53 5d 0b 11 53 5a 75 d1 29 d7 bc d5 b0 53   ..S]..SZu.)....S
+0100  de d5 94 d3 8a d2 42 16 1b cf 55 78 3b 3c d6 2d   ......B...Ux;<.-
+0110  2a fe 90 bb ec ed c3 14 7d 9a 8e 00 a7 1f 55 f6   *.......}.....U.
+0120  f0 e5 1b 7f c3 e5 d6 ef 04 c4 52 d3 1e cc 83 d6   ..........R.....
+0130  82 a6 4a c9 c3 fd 72 75 d8 42 f5 17 f2 b0 14 29   ..J...ru.B.....)
+0140  26 7a 21 5b a5 fd a0 d8 49 f0 7a f8 ba 70 29 ac   &z![....I.z..p).
+0150  f6 5e a7 51 3d a0 36 b1 32 90 01 e7 bf 16 c0 e7   .^.Q=.6.2.......
+0160  49 72 b7 dd 11 e2 0f 87 c9 2a 9e af 8b 1d 8e 78   Ir.......*.....x
+0170  4d 7e 04 71 54 f6 02 f8 17 f9 8d 7b 47 b2 7e 22   M~.qT......{G.~"
+0180  80 f3 9c 3e cd 16 dc 04 24 bc c1 e6 6e 19 db c5   ...>....$...n...
+0190  b8 e7 ec 5b 9c 39 f9 a7 05 74 40 97 ed 05 e1 78   ...[.9...t@....x
+01a0  e0 ef 72 46 a4 1f 46 86 a8 63 81 20 ed 11 e2 50   ..rF..F..c. ...P
+01b0  37 07 8f c4 a3 15 4d e7 d3 4c 60 72 dd 8a 46 40   7.....M..L`r..F@
+01c0  1e a9 9b 18 7b 70 03 62 28 03 8b c0 6e b2 f7 23   ....{p.b(...n..#
+01d0  00 0b 50 8b 3f dc 7b cb 20 af 75 ce 88 7e 7b 8e   ..P.?.{. .u..~{.
+01e0  0d f2 15 4b c4 67 4e ac e4 74 c8 2e bc 6d e5 45   ...K.gN..t...m.E
+01f0  0f 7c 92 08 a7 24 ac b4 c5 66 8f 46 8c 64 cf 3e   .|...$...f.F.d.>
+
+  > fw_magic_end       : 0x4edd4118
+output_size : 0x000d2fe4
+
+[+] Extracted ilo5.bin
+
+>> skip 0xb8f8
+
+>> skip 0xb8d8
+
+-------------------------------------------------------------------------------
+[+] iLO Header 6
+  > module                  : 1.10.74
+  > fw_magic                : 0x4edd411a
+  > type                    : 0x2
+  > field_28                : 0x200000
+  > field_2C                : 0x5
+  > field_2C                : 0x5
+  > is_compressed           : 0x1
+  > field_34                : 0x0
+  > field_38                : 0xc41
+  > field_3C                : 0x0
+  > field_40                : 0xccd762
+  > decompressed_checksum   : 0xc90a5ddd
+  > compressed_size         : 0xccd762
+  > decompressed_size       : 0x177206c
+  > field_50                : 0xffffffff
+  > field_54                : 0x0
+  > field_58                : 0x1
+  > field_5A                : 0x0
+  > compressed_checksum     : 0xc75208a2
+  > field_60                : 0x0
+  > field_64                : 0x0
+  > field_68                : 0x0
+  > field_6C                : 0x0
+  > field_70                : 0x0
+  > field_74                : 0x0
+  > field_78                : 0x0
+  > field_7C                : 0x0
+  > copyright               : Copyright 2017 Hewlett Packard Enterprise Development, LP
+  > signature
+0000  66 92 ef 99 e0 c7 6f 87 9f 6f 8f ea 1f e1 8e 7b   f.....o..o.....{
+0010  e3 38 6d c1 56 9b 42 ea f9 dd 54 0e 4c fe 12 b5   .8m.V.B...T.L...
+0020  41 6b a7 3b c9 56 2d 56 b7 a7 96 90 f5 96 3a 66   Ak.;.V-V......:f
+0030  3a 0c da 99 c3 82 9b 7b ed ab 3e 93 b3 c6 20 8f   :......{..>... .
+0040  41 69 9b 46 fe 2a f8 bd 2c b3 aa 59 82 c2 62 2b   Ai.F.*..,..Y..b+
+0050  8a b2 ef fe 83 47 12 ea 51 a4 43 4b 9d ac ee 81   .....G..Q.CK....
+0060  19 f9 75 a2 83 75 c2 ac 68 fe 9a db e0 ba 3d 91   ..u..u..h.....=.
+0070  26 30 b6 ad 9e e4 aa b3 10 a9 c2 1e 5d d5 64 36   &0..........].d6
+0080  61 a0 5b 8c e5 a9 b6 73 25 b0 3a 17 75 3c 70 da   a.[....s%.:.u<p.
+0090  f4 b2 02 83 5f cd bf f2 c1 ff c9 53 d9 c0 50 14   ...._......S..P.
+00a0  f8 49 55 89 a9 e0 35 4f e7 a8 59 34 8f d6 ed 52   .IU...5O..Y4...R
+00b0  ec 93 2f ed 87 b3 a5 12 3b 40 1c 9e e9 61 56 28   ../.....;@...aV(
+00c0  98 8e 76 a6 a4 a3 9a 48 da 32 a4 cc 6a ab d7 46   ..v....H.2..j..F
+00d0  bf 09 f6 f0 2b f1 83 11 e3 cf bf 21 52 9c 27 47   ....+......!R.'G
+00e0  52 2f a8 e2 f9 6d 4b e1 ed b2 e7 1d b2 19 63 16   R/...mK.......c.
+00f0  e5 0b 16 f7 d0 bb a8 25 84 7c 95 b4 51 73 e9 c7   .......%.|..Qs..
+0100  38 ff 4e 72 7d cb 64 e4 f6 59 61 ae f4 3d dd af   8.Nr}.d..Ya..=..
+0110  45 53 36 60 b1 03 7b 70 0e f2 4a 2b b0 93 e7 13   ES6`..{p..J+....
+0120  63 5e 1f 57 23 df 44 7e 34 13 7e 27 0e 91 a3 56   c^.W#.D~4.~'...V
+0130  04 4c 46 3c 96 21 f7 d5 8b 9a 09 34 c2 17 5a 7e   .LF<.!.....4..Z~
+0140  2b 27 b4 13 c9 e7 33 ab b6 8e 36 82 43 8e 22 da   +'....3...6.C.".
+0150  8d fa 97 9f 0a 1b 86 f5 c8 21 ae 2a 8e 2a b4 73   .........!.*.*.s
+0160  37 9f d8 1d 0e 89 13 74 15 aa 02 b8 99 d2 99 9a   7......t........
+0170  50 60 13 80 9d dc 2c a8 be f0 fe a6 bf 7a e7 60   P`....,......z.`
+0180  0c 4c 21 c8 95 8a 97 1b 4e 13 c1 ff 46 01 e3 f2   .L!.....N...F...
+0190  7f 2f cc bd a0 45 e5 9d 55 2f 4d da 7f 6b 99 d9   ./...E..U/M..k..
+01a0  f2 69 91 d8 a3 c9 b7 0b b3 97 51 fb 37 2d b0 77   .i........Q.7-.w
+01b0  90 b6 a6 99 10 22 6d 27 38 39 16 48 e2 30 fa 26   ....."m'89.H.0.&
+01c0  7a de be 5f 30 3e df e9 d4 29 d7 ea 12 19 eb 93   z.._0>...)......
+01d0  c1 0e b0 df 48 fe 00 c0 1a f0 a6 93 f9 70 3f e8   ....H........p?.
+01e0  b3 0f 38 be d2 cb 77 c9 23 7f 91 7d 01 dd 47 8c   ..8...w.#..}..G.
+01f0  ae e4 c2 52 4b 03 77 f9 2c b3 11 4c 34 1e 3f 07   ...RK.w.,..L4.?.
+
+  > fw_magic_end       : 0x4edd4118
+output_size : 0x0177206c
+
+[+] Extracted ilo6.bin
+
+>> skip 0xee20be
+
+>> skip 0xee209e
+
+-------------------------------------------------------------------------------
+[+] iLO Header 7
+  > module                  : 1.10.74
+  > fw_magic                : 0x4edd411a
+  > type                    : 0x2
+  > field_28                : 0x220000
+  > field_2C                : 0x5
+  > field_2C                : 0x5
+  > is_compressed           : 0x1
+  > field_34                : 0x0
+  > field_38                : 0xc41
+  > field_3C                : 0x0
+  > field_40                : 0x267f60
+  > decompressed_checksum   : 0x2d0b2292
+  > compressed_size         : 0x267f60
+  > decompressed_size       : 0x486ebc
+  > field_50                : 0xffffffff
+  > field_54                : 0x0
+  > field_58                : 0x1
+  > field_5A                : 0x0
+  > compressed_checksum     : 0x3e0c4173
+  > field_60                : 0x0
+  > field_64                : 0x0
+  > field_68                : 0x0
+  > field_6C                : 0x0
+  > field_70                : 0x0
+  > field_74                : 0x0
+  > field_78                : 0x0
+  > field_7C                : 0x0
+  > copyright               : Copyright 2017 Hewlett Packard Enterprise Development, LP
+  > signature
+0000  a2 78 32 cb e6 7b 2a f2 d5 b9 f8 9b 6e fe 60 4a   .x2..{*.....n.`J
+0010  02 7c fd 57 48 8a da db d0 99 68 a4 97 5c 3e 1d   .|.WH.....h...>.
+0020  17 2a 4b 09 18 10 d9 7b 55 be 29 2a 8c ef 22 df   .*K....{U.)*..".
+0030  bf 59 9f a0 da d1 48 08 ec 05 d3 07 d2 e8 4c 62   .Y....H.......Lb
+0040  6d c8 cf d9 9d 4c 2b 3f 28 eb fb e0 9e b2 89 6d   m....L+?(......m
+0050  9e 31 6c 08 8e 03 fa 5c f9 14 f0 3b 13 f7 6f f8   .1l........;..o.
+0060  17 7e 0a 87 a1 20 44 ad 5e 4a 07 2a 14 71 71 0d   .~... D.^J.*.qq.
+0070  d1 b7 69 ad cc 18 58 5c c7 1d 03 5b 88 8c ba 96   ..i...X....[....
+0080  cf f0 d2 e2 03 c1 f8 22 13 13 9a 88 93 f2 c3 3b   .......".......;
+0090  c6 59 da 02 82 1a 3e 5b 76 6f f9 1c 8a c8 b5 93   .Y....>[vo......
+00a0  31 0d d6 e8 37 08 78 ca 5b dd ab e5 a1 ee 84 e8   1...7.x.[.......
+00b0  6c 95 8d 44 08 07 ac 2c 79 e7 b7 c6 66 b0 2d 8d   l..D...,y...f.-.
+00c0  6e e8 ed b0 ca 9f 2c a1 d9 a5 51 c9 5d b5 0f 7b   n.....,...Q.]..{
+00d0  41 a3 50 10 60 dc 87 34 6e 5d 77 f3 2e 9e f8 7c   A.P.`..4n]w....|
+00e0  0e ec b0 2c 60 ac a1 13 f9 8e 3e be 07 c2 6f d5   ...,`.....>...o.
+00f0  0f cb c2 1d 5c 35 6b dc 6a 2a f8 e7 ca 3b e1 2c   .....5k.j*...;.,
+0100  87 ff bb 58 fb a4 71 5f 99 48 5f 2b 54 da 29 4b   ...X..q_.H_+T.)K
+0110  be 45 14 d0 f4 0a 94 a9 01 4d c5 05 a6 26 aa 55   .E.......M...&.U
+0120  0d 1d e4 f2 08 20 61 b2 9f bb 73 99 d0 96 56 56   ..... a...s...VV
+0130  a1 39 1b f4 8c f2 42 c8 98 c0 c0 c3 57 d7 1c 2b   .9....B.....W..+
+0140  34 80 28 73 94 1d 6c 9d 1e e1 37 43 b6 89 fc a3   4.(s..l...7C....
+0150  0e 0e f2 f5 ad 8a 4e 72 62 ea 9c 8b 36 00 ac fe   ......Nrb...6...
+0160  3c 8a 1e 6d 95 8d 3b 2a 31 17 ba 69 bd 13 6a 1c   <..m..;*1..i..j.
+0170  7e 37 0f b0 2a 08 cd d1 58 d0 86 90 6e b5 0a d5   ~7..*...X...n...
+0180  b7 f9 45 76 f3 fb f1 ca 68 74 29 cb 25 3f ea 15   ..Ev....ht).%?..
+0190  73 37 30 02 cd 5b a5 1d ee 3a 87 64 de 74 67 73   s70..[...:.d.tgs
+01a0  5b 8f d1 48 ee 8d fc ab 69 e3 4b ab be 98 1a 7e   [..H....i.K....~
+01b0  90 ac 48 b1 26 12 6c 41 b2 a7 fb 94 af 43 8e b4   ..H.&.lA.....C..
+01c0  c7 3a c0 02 c5 2f 5e e8 2a b0 b3 77 98 82 08 15   .:.../^.*..w....
+01d0  89 34 18 f4 94 67 73 9d d8 40 7e f9 f1 63 c5 73   .4...gs..@~..c.s
+01e0  31 a6 13 8a 8b 81 91 dd 5b ba 47 7a a4 c7 ab 5d   1.......[.Gz...]
+01f0  20 c1 2e 3f 99 c9 a0 7d 84 b2 15 8e 73 16 70 ad    ..?...}....s.p.
+
+  > fw_magic_end       : 0x4edd4118
+output_size : 0x00486ebc
+
+[+] Extracted ilo7.bin
+
+>> skip 0x-1
+[x] failed to find next module
+
+-------------------------------------------------------------------------------
+[+] Modules summary (8)
+     0)                    neba9 0.9.5  , at 0x00010000
+     1)                     neb926 0.3  , at 0x00020000
+     2)                    neba9 0.9.5  , at 0x00010000
+     3)                     neb926 0.3  , at 0x00020000
+     4)          iLO 5 Kernel 00.09.41  , at 0x000b0000
+     5)          iLO 5 Kernel 00.09.41  , at 0x000b0000
+     6)                        1.10.74  , at 0x00200000
+     7)                        1.10.74  , at 0x00220000
