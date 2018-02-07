@@ -5,13 +5,13 @@ Subverting your server through its BMC: the HPE iLO4 case
 Introduction
 ------------
 
-iLO is the server management solution embedded in almost every HP servers for
-more than 10 years. It provides every feature required by a system
+``iLO`` is the server management solution embedded in almost every ``HP``
+servers for more than 10 years. It provides every feature required by a system
 administrator to remotely manage a server without having to reach it
 physically. Such features include power management, remote system console,
 remote CD/DVD image mounting, as well as many monitoring indicators.
 
-We've performed a deep dive security study of HP ``iLO4`` (known to be used on
+We've performed a deep dive security study of ``HP iLO4`` (known to be used on
 the family of servers ``HP ProLiant Gen8`` and ``ProLiant Gen9`` servers) and
 the results of this study were presented at the **REcon** conference held in
 Brussels (February 2 - 4, 2018, see [1]_).
@@ -124,7 +124,7 @@ From the extracted file, ``ilo0.bin`` is the ``Integrity`` applicative image
 parse each of these tasks and generate the ``IDA Pro`` loading script, one can
 use the script ``dissection.rb``.
 
-It relies upon the ``Metasm `` framework[5]_ and also requires the ``Bindata``
+It relies upon the ``Metasm`` framework[5]_ and also requires the ``Bindata``
 library [6]_.
 
 ::
@@ -166,9 +166,9 @@ can be used to extract the ``Integrity`` applicative image.
 Network
 *******
 
-Finally, to help people scan for existing vulnerable iLO systems exposed in
+Finally, to help people scan for existing vulnerable ``iLO`` systems exposed in
 their own infrastructures, we release a simple ``Go`` scanner. It attempts to
-fetch a special ``iLO`` page:  "``/xmldata?item=ALL``"; if it exists, then it
+fetch a special ``iLO`` page:  ``/xmldata?item=ALL``; if it exists, then it
 extracts the firmware version and HP server type.
 
 
@@ -228,8 +228,8 @@ References
 
 .. [1] https://recon.cx/2018/brussels/talks/subvert_server_bmc.html
 .. [2] https://www.ghs.com/products/rtos/integrity.html
-.. [3] http://h20565.www2.hpe.com/hpsc/doc/public/display?docId=hpesbhf03769en_us
-.. [4] https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-12542
+.. [3] https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-12542
+.. [4] http://h20565.www2.hpe.com/hpsc/doc/public/display?docId=hpesbhf03769en_us
 .. [5] https://github.com/jjyg/metasm
 .. [6] https://github.com/dmendel/bindata
 .. [GPLv2] https://github.com/airbus-seclab/ilo4_toolbox/blob/master/COPYING
