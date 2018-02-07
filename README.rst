@@ -124,7 +124,7 @@ From the extracted file, ``ilo0.bin`` is the ``Integrity`` applicative image
 parse each of these tasks and generate the ``IDA Pro`` loading script, one can
 use the script ``dissection.rb``.
 
-It relies upon the ``Metasm`` framework[5]_ and also requires the ``Bindata``
+It relies upon the ``Metasm`` framework [5]_ and also requires the ``Bindata``
 library [6]_.
 
 ::
@@ -219,7 +219,7 @@ Authors
 License
 -------
 
-The scripts and scanner are released under the [GPLv2].
+The scripts and scanner are released under the [GPLv2]_.
 
 
 
@@ -234,3 +234,4 @@ References
 .. [6] https://github.com/dmendel/bindata
 .. [GPLv2] https://github.com/airbus-seclab/ilo4_toolbox/blob/master/COPYING
 .. _here: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/RECONBRX2018-Slides-Subverting_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
+
