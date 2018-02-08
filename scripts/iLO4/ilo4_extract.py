@@ -255,7 +255,6 @@ if not data.startswith("iLO3") and not data.startswith("iLO4"):
     print "[-] Bad file format"
     sys.exit(1)
 
-sss
 # get signature: should be ilO3 or ilO4
 ilo_sign = data[:4]
 ilo_bootstrap_header = data[:0x440]
@@ -301,8 +300,6 @@ crypto_params = SignatureParams.from_buffer_copy(ilo_crypto_params)
 
 crypto_params.dump()
 
-
-sys.exit()
 #------------------------------------------------------------------------------
 # extract first header
 
