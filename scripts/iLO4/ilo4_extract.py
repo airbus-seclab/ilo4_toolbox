@@ -300,8 +300,6 @@ crypto_params = SignatureParams.from_buffer_copy(ilo_crypto_params)
 
 crypto_params.dump()
 
-
-sys.exit()
 #------------------------------------------------------------------------------
 # extract first header
 
