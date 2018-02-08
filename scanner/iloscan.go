@@ -20,7 +20,7 @@ import (
 // List of targets in CIDR format
 // can be commented and used args instead in the main func
 var (
-	targets = []string{
+	defaultTargets = []string{
 		"10.0.0.0/8"}
 )
 
@@ -154,7 +154,10 @@ func GenerateUrlsFromTargets(targets []string) {
 
 func main() {
 
-	targets := []string{os.Args[1]}
+	var targets []string = defaultTargets
+	if len(os.Args) > 1 {
+		targets = []string{os.Args[1]}
+	}
 
 	// Remember your path location
 	var _, err = os.Stat(path)
