@@ -309,7 +309,7 @@ References
 .. [4] http://h20565.www2.hpe.com/hpsc/doc/public/display?docId=hpesbhf03769en_us
 .. [5] https://github.com/jjyg/metasm
 .. [6] https://github.com/dmendel/bindata
-.. [8] https://www.sstic.org/2018/presentation/subverting_your_server_through_its_bmc_the_hpe_ilo4_case/
+.. [8] https://www.sstic.org/2018/presentation/backdooring_your_server_through_its_bmc_the_hpe_ilo4_case/
 .. [GPLv2] https://github.com/airbus-seclab/ilo4_toolbox/blob/master/COPYING
 .. _here: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/RECONBRX2018-Slides-Subverting_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
 .. _location: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/SSTIC2018-Slides-EN-Backdooring_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
