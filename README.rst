@@ -40,7 +40,7 @@ February 2017, known as ``CVE-2017-12542`` (``CVSSv3`` 9.8 [3]_) :
 A second critical vulnerability was identified in  ``iLO4`` and  ``iLO5`` . It
 was reported to the ``HP PSIRT`` in April 2018 and is known as
 ``CVE-2018-7078`` (``CVSSv3`` 7.2 [9]_, ``HPE`` Security Bulletin
-``HPESBHF03844``[10]_) :
+``HPESBHF03844`` [10]_) :
 
 * Remote or local code execution
 * Fixed in ``iLO4`` versions ``2.60`` (released in May 2018)
