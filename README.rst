@@ -37,6 +37,16 @@ February 2017, known as ``CVE-2017-12542`` (``CVSSv3`` 9.8 [3]_) :
 * Fixed in ``iLO4`` versions ``2.53`` (released in May 2017, buggy) and ``2.54`` [4]_
 
 
+A second critical vulnerability was identified in  ``iLO4`` and  ``iLO5`` . It
+was reported to the ``HP PSIRT`` in April 2018 and is known as
+``CVE-2018-7078`` (``CVSSv3`` 7.2 [9]_, ``HPE`` Security Bulletin
+``HPESBHF03844``[10]_) :
+
+* Remote or local code execution
+* Fixed in ``iLO4`` versions ``2.60`` (released in May 2018)
+* Fixed in ``iLO5`` versions ``1.30`` (released in June 2018)
+
+
 Slides and demos
 ----------------
 
@@ -310,6 +320,8 @@ References
 .. [5] https://github.com/jjyg/metasm
 .. [6] https://github.com/dmendel/bindata
 .. [8] https://www.sstic.org/2018/presentation/backdooring_your_server_through_its_bmc_the_hpe_ilo4_case/
+.. [9] https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-7078
+.. [10] https://support.hpe.com/hpsc/doc/public/display?docId=emr_na-hpesbhf03844en_us
 .. [GPLv2] https://github.com/airbus-seclab/ilo4_toolbox/blob/master/COPYING
 .. _here: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/RECONBRX2018-Slides-Subverting_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
 .. _location: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/SSTIC2018-Slides-EN-Backdooring_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
