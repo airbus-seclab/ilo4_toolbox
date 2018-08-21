@@ -293,6 +293,16 @@ Then look the result in ``/tmp/iloscan.log`` (can be changed in the source):
     > less /tmp/iloscan.log
     192.168.66.69{{ RIMP} [{{ HSI} ProLiant DL380 G7}] [{{ MP} 1.80 ILOCZ2069K2S4       ILO583970CZ2069K2S4}]}
 
+Alternatively, you can invoke the binary with a subnet on the command line (individual IP addresses should be specified as a /32 netmask):
+
+::
+
+    > ./iloscan 1.2.3.4/32
+    Generated 1.2.3.4
+    Fetching 1.2.3.4
+    1.2.3.4 status: 200 OK
+    {{ RIMP} [{{ HSI} ProLiant DL380 Gen9}] [{{ MP} 2.40 ILOCZJ641057H ILO826683CZJ641057H}]}
+
 
 Authors
 -------
