@@ -5,20 +5,26 @@ Subverting your server through its BMC: the HPE iLO4 case
 Introduction
 ------------
 
-``iLO`` is the server management solution embedded in almost every ``HP``
+``iLO`` is the server management solution embedded in almost every ``HPE``
 servers for more than 10 years. It provides every feature required by a system
 administrator to remotely manage a server without having to reach it
 physically. Such features include power management, remote system console,
 remote CD/DVD image mounting, as well as many monitoring indicators.
 
-We've performed a deep dive security study of ``HP iLO4`` (known to be used on
-the family of servers ``HP ProLiant Gen8`` and ``ProLiant Gen9`` servers) and
+We've performed a deep dive security study of ``HPE iLO4`` (known to be used on
+the family of servers ``HPE ProLiant Gen8`` and ``ProLiant Gen9`` servers) and
 the results of this study were presented at the **REcon** conference held in
 Brussels (February 2 - 4, 2018, see [1]_).
 
 A follow-up of our study was presented at the **SSTIC** conference, held in
 France (Rennes, June 13 - 15, 2018, see [8]_). We focused this talk on
 firmware backdooring and achieving long-term persistence.
+
+In November 2018, we presented our latest research on ``HPE iLO4`` and
+``iLO5`` at **ZeroNights** conference, held in Saint-Petersburg, Russia
+(November 20 - 21, 2018, see [11]_). This talk was focused on the attack
+surface exposed to the host operating system and on the new secure boot
+feature (silicon root of trust) introduced with ``iLO5``.
 
 ``iLO4`` runs on a dedicated ``ARM`` processor embedded in the server,
 and is totally independent from the main processor. It has a dedicated flash
@@ -30,7 +36,7 @@ GreenHills Integrity [2]_.
 Results
 -------
 
-One critical vulnerability was identified and reported to the ``HP PSIRT`` in
+One critical vulnerability was identified and reported to the ``HPE PSRT`` in
 February 2017, known as ``CVE-2017-12542`` (``CVSSv3`` 9.8 [3]_) :
 
 * Authentication bypass and remote code execution
@@ -38,13 +44,22 @@ February 2017, known as ``CVE-2017-12542`` (``CVSSv3`` 9.8 [3]_) :
 
 
 A second critical vulnerability was identified in  ``iLO4`` and  ``iLO5`` . It
-was reported to the ``HP PSIRT`` in April 2018 and is known as
+was reported to the ``HPE PSRT`` in April 2018 and is known as
 ``CVE-2018-7078`` (``CVSSv3`` 7.2 [9]_, ``HPE`` Security Bulletin
 ``HPESBHF03844`` [10]_) :
 
 * Remote or local code execution
-* Fixed in ``iLO4`` versions ``2.60`` (released in May 2018)
-* Fixed in ``iLO5`` versions ``1.30`` (released in June 2018)
+* Fixed in ``iLO4`` version ``2.60`` (released in May 2018)
+* Fixed in ``iLO5`` version ``1.30`` (released in June 2018)
+
+
+Finally a critical vulnerability was identified in the implementation of the
+secure boot feature of ``iLO5``. It was reported to the ``HPE PSRT`` in
+September 2018 and is known as ``CVE-2018-7113`` (``CVSSv3`` 7.2 [9]_, ``HPE``
+Security Bulletin ``HPESBHF03894`` [12]_):
+
+* Local Bypass of Security Restrictions
+* Fixed in ``iLO5`` version ``1.37`` (released in October 2018)
 
 
 Slides and demos
@@ -116,6 +131,35 @@ channel to execute arbitrary commands on the host system.
     :width: 100%
     :align: center
 
+
+ZeroNights 2018
+***************
+
+The material we presented as **ZeroNights** is available from there_. It
+contains two major contributions.
+
+First, an analysis of the communication channel between the host system and
+the ``iLO`` (``4`` or ``5``), known as ``CHIF`` channel interface. It opens a
+new attack surface,  exposed to the host (even though ``iLO`` is set as
+disabled). We demonstrated that the exploitation of ``CVE-2018-7078`` could
+allow us to flash a backdoored firmware from the host through this interface.
+
+Then, an in-depth review of the new secure boot feature introduced with
+``iLO5`` and ``HPE Gen10`` server line. It covers the complete bootchain, from
+the ``iLO ASIC`` (silicon root of trust) down to the ``Integrity`` kernel and
+userland images. We discovered a logic error (``CVE-2018-7113``) in the kernel
+code responsible for the integrity verification of the userland image, which
+can be exploited to break the chain-of-trust.
+
+To illustrate this defeat of the secure boot feature, we propose the new video
+below. It demonstrates the exploitation of the logic error to update the
+``iLO5`` firmware with a compromised firmware embedding a backdoored userland
+image in which the banner of the ``SSH`` server has been altered.
+
+
+.. image:: https://github.com/airbus-seclab/ilo4_toolbox/blob/master/demos/demo5_secure_boot.gif
+    :width: 100%
+    :align: center
 
 
 Tooling
@@ -332,7 +376,10 @@ References
 .. [8] https://www.sstic.org/2018/presentation/backdooring_your_server_through_its_bmc_the_hpe_ilo4_case/
 .. [9] https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-7078
 .. [10] https://support.hpe.com/hpsc/doc/public/display?docId=emr_na-hpesbhf03844en_us
+.. [11] https://2018.zeronights.ru/en/reports/turning-your-bmc-into-a-revolving-door/
+.. [12] https://support.hpe.com/hpsc/doc/public/display?docId=hpesbhf03894en_us
 .. [GPLv2] https://github.com/airbus-seclab/ilo4_toolbox/blob/master/COPYING
 .. _here: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/RECONBRX2018-Slides-Subverting_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
 .. _location: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/SSTIC2018-Slides-EN-Backdooring_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
 .. _paper: https://airbus-seclab.github.io/ilo/SSTIC2018-Article-subverting_your_server_through_its_bmc_the_hpe_ilo4_case-gazet_perigaud_czarny.pdf
+.. _there: https://airbus-seclab.github.io/ilo/ZERONIGHTS2018-Slides-EN-Turning_your_BMC_into_a_revolving_door-perigaud-gazet-czarny.pdf

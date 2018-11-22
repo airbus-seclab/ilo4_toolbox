@@ -1,11 +1,10 @@
->python ilo5_extract.py ilo5_110.bin extract > ilo5_extract.log
-
-[+]  iLO Bootstrap header :
-  > img_magic              : HPIMAGE
+>python ilo5_extract.py ilo5_110.bin extract_110 > ilo5_110.log
+[+] iLO HPIMAGE header :
+  > img_magic          : HPIMAGE
   > version major      : 0x1
   > version minor      : 0x1
   > field_A            : 0x00
-  > device id          :
+  > device id          : ILO
 0000  9d 7b 31 2f e3 c9 76 4d bf f6 b9 d0 d0 85 a9 52   .{1/..vM.......R
 
   > field_1C            : 0x1
@@ -23,26 +22,26 @@
 
 
 
-[+] iLO Bootstrap footer 0:
+[+] iLO boot block footer:
   > module                  : Secure Micro Boot 1.01
   > fw_magic                : 0x4edd411a
-  > type                    : 0x2
-  > field_28                : 0x30000
-  > field_2C                : 0x4
-  > field_2C                : 0x4
-  > is_compressed           : 0x1
+  > header_type             : 0x2
+  > field_28                : 0x0
+  > type                    : 0x3
+  > flags                   : 0x4
+  > field_30                : 0x1
   > field_34                : 0x0
   > field_38                : 0xb86
-  > field_3C                : 0x8000
-  > field_40                : 0x0
-  > decompressed_checksum   : 0xe88c2109
+  > backward_crc_offset     : 0x8000
+  > forward_crc_offset      : 0x0
+  > img_crc                 : 0xe88c2109
   > compressed_size         : 0x8000
   > decompressed_size       : 0x8000
   > field_50                : 0xffffffff
   > field_54                : 0x0
-  > field_58                : 0x2
-  > field_5A                : 0x0
-  > compressed_checksum     : 0x5a2b1ac2
+  > crypto_params_index     : 0x2
+  > crypto_params_index 2   : 0x0
+  > header_crc              : 0x5a2b1ac2
   > field_60                : 0x0
   > field_64                : 0x0
   > field_68                : 0x0
@@ -88,28 +87,32 @@
 
   > fw_magic_end       : 0x4edd4118
 
+[+] header crc ok: 0x5a2b1ac2
+[+] image crc ok : 0xe88c2109
+
+
 
 
 [+] iLO Bootstrap footer 1:
   > module                  : Secure Micro Boot 1.01
   > fw_magic                : 0x4edd411a
-  > type                    : 0x2
-  > field_28                : 0x30000
-  > field_2C                : 0x4
-  > field_2C                : 0x4
-  > is_compressed           : 0x1
+  > header_type             : 0x2
+  > field_28                : 0x0
+  > type                    : 0x3
+  > flags                   : 0x4
+  > field_30                : 0x1
   > field_34                : 0x0
   > field_38                : 0xb86
-  > field_3C                : 0x5000
-  > field_40                : 0x0
-  > decompressed_checksum   : 0x8ce8238c
+  > backward_crc_offset     : 0x5000
+  > forward_crc_offset      : 0x0
+  > img_crc                 : 0x8ce8238c
   > compressed_size         : 0x4da8
   > decompressed_size       : 0x4da8
   > field_50                : 0xffffffff
   > field_54                : 0x0
-  > field_58                : 0x2
-  > field_5A                : 0x0
-  > compressed_checksum     : 0x701cf623
+  > crypto_params_index     : 0x2
+  > crypto_params_index 2   : 0x0
+  > header_crc              : 0x701cf623
   > field_60                : 0x0
   > field_64                : 0x0
   > field_68                : 0x0
@@ -155,10 +158,14 @@
 
   > fw_magic_end       : 0x4edd4118
 
+[+] header crc ok: 0x701cf623
+[+] image crc ok : 0x8ce8238c
+
+
 
 
 [+] iLO target list: 1 element(s)
-    target 0x0
+    target 0x0 (ILO_5)
 0000  62 a6 64 47 42 b3 c7 4f 9c e9 25 8c 5d 99 e8 15   b.dGB..O..%.]...
 
 
@@ -166,23 +173,23 @@
 [+] iLO Header 0
   > module                  : neba9 0.9.5
   > fw_magic                : 0x4edd411a
-  > type                    : 0x2
-  > field_28                : 0x10000
-  > field_2C                : 0x4
-  > field_2C                : 0x4
-  > is_compressed           : 0x0
+  > header_type             : 0x2
+  > field_28                : 0x0
+  > type                    : 0x1
+  > flags                   : 0x4
+  > field_30                : 0x0
   > field_34                : 0x0
   > field_38                : 0x603d0bb6
-  > field_3C                : 0x0
-  > field_40                : 0x3508
-  > decompressed_checksum   : 0xc078ff1c
+  > backward_crc_offset     : 0x0
+  > forward_crc_offset      : 0x3508
+  > img_crc                 : 0xc078ff1c
   > compressed_size         : 0x3508
   > decompressed_size       : 0x3508
   > field_50                : 0xffffffff
   > field_54                : 0x0
-  > field_58                : 0x2
-  > field_5A                : 0x0
-  > compressed_checksum     : 0x53200025
+  > crypto_params_index     : 0x2
+  > crypto_params_index 2   : 0x0
+  > header_crc              : 0x53200025
   > field_60                : 0x0
   > field_64                : 0x0
   > field_68                : 0x0
@@ -228,31 +235,31 @@
 
   > fw_magic_end       : 0x4edd4118
 
->> skip 0x4318
+[+] header crc ok: 0x53200025
+[+] image crc ok : 0xc078ff1c
 
->> skip 0x42f8
 
 -------------------------------------------------------------------------------
 [+] iLO Header 1
   > module                  : neb926 0.3
   > fw_magic                : 0x4edd411a
+  > header_type             : 0x2
+  > field_28                : 0x0
   > type                    : 0x2
-  > field_28                : 0x20000
-  > field_2C                : 0x4
-  > field_2C                : 0x4
-  > is_compressed           : 0x0
+  > flags                   : 0x4
+  > field_30                : 0x0
   > field_34                : 0x0
   > field_38                : 0x678a8bac
-  > field_3C                : 0x0
-  > field_40                : 0xad0
-  > decompressed_checksum   : 0x4f73621c
+  > backward_crc_offset     : 0x0
+  > forward_crc_offset      : 0xad0
+  > img_crc                 : 0x4f73621c
   > compressed_size         : 0xad0
   > decompressed_size       : 0xad0
   > field_50                : 0xffffffff
   > field_54                : 0x0
-  > field_58                : 0x2
-  > field_5A                : 0x0
-  > compressed_checksum     : 0xecde3380
+  > crypto_params_index     : 0x2
+  > crypto_params_index 2   : 0x0
+  > header_crc              : 0xecde3380
   > field_60                : 0x0
   > field_64                : 0x0
   > field_68                : 0x0
@@ -298,31 +305,31 @@
 
   > fw_magic_end       : 0x4edd4118
 
->> skip 0x6d50
+[+] header crc ok: 0xecde3380
+[+] image crc ok : 0x4f73621c
 
->> skip 0x6d30
 
 -------------------------------------------------------------------------------
 [+] iLO Header 2
   > module                  : neba9 0.9.5
   > fw_magic                : 0x4edd411a
-  > type                    : 0x2
-  > field_28                : 0x10000
-  > field_2C                : 0x4
-  > field_2C                : 0x4
-  > is_compressed           : 0x0
+  > header_type             : 0x2
+  > field_28                : 0x0
+  > type                    : 0x1
+  > flags                   : 0x4
+  > field_30                : 0x0
   > field_34                : 0x0
   > field_38                : 0x603d0bb6
-  > field_3C                : 0x0
-  > field_40                : 0x3508
-  > decompressed_checksum   : 0xc078ff1c
+  > backward_crc_offset     : 0x0
+  > forward_crc_offset      : 0x3508
+  > img_crc                 : 0xc078ff1c
   > compressed_size         : 0x3508
   > decompressed_size       : 0x3508
   > field_50                : 0xffffffff
   > field_54                : 0x0
-  > field_58                : 0x2
-  > field_5A                : 0x0
-  > compressed_checksum     : 0x53200025
+  > crypto_params_index     : 0x2
+  > crypto_params_index 2   : 0x0
+  > header_crc              : 0x53200025
   > field_60                : 0x0
   > field_64                : 0x0
   > field_68                : 0x0
@@ -368,31 +375,31 @@
 
   > fw_magic_end       : 0x4edd4118
 
->> skip 0x4318
+[+] header crc ok: 0x53200025
+[+] image crc ok : 0xc078ff1c
 
->> skip 0x42f8
 
 -------------------------------------------------------------------------------
 [+] iLO Header 3
   > module                  : neb926 0.3
   > fw_magic                : 0x4edd411a
+  > header_type             : 0x2
+  > field_28                : 0x0
   > type                    : 0x2
-  > field_28                : 0x20000
-  > field_2C                : 0x4
-  > field_2C                : 0x4
-  > is_compressed           : 0x0
+  > flags                   : 0x4
+  > field_30                : 0x0
   > field_34                : 0x0
   > field_38                : 0x678a8bac
-  > field_3C                : 0x0
-  > field_40                : 0xad0
-  > decompressed_checksum   : 0x4f73621c
+  > backward_crc_offset     : 0x0
+  > forward_crc_offset      : 0xad0
+  > img_crc                 : 0x4f73621c
   > compressed_size         : 0xad0
   > decompressed_size       : 0xad0
   > field_50                : 0xffffffff
   > field_54                : 0x0
-  > field_58                : 0x2
-  > field_5A                : 0x0
-  > compressed_checksum     : 0xecde3380
+  > crypto_params_index     : 0x2
+  > crypto_params_index 2   : 0x0
+  > header_crc              : 0xecde3380
   > field_60                : 0x0
   > field_64                : 0x0
   > field_68                : 0x0
@@ -438,31 +445,31 @@
 
   > fw_magic_end       : 0x4edd4118
 
->> skip 0x6d50
+[+] header crc ok: 0xecde3380
+[+] image crc ok : 0x4f73621c
 
->> skip 0x6d30
 
 -------------------------------------------------------------------------------
 [+] iLO Header 4
   > module                  : iLO 5 Kernel 00.09.41
   > fw_magic                : 0x4edd411a
-  > type                    : 0x2
-  > field_28                : 0xb0000
-  > field_2C                : 0x5
-  > field_2C                : 0x5
-  > is_compressed           : 0x1
+  > header_type             : 0x2
+  > field_28                : 0x0
+  > type                    : 0xb
+  > flags                   : 0x5
+  > field_30                : 0x1
   > field_34                : 0x0
   > field_38                : 0xc17
-  > field_3C                : 0x0
-  > field_40                : 0x83f28
-  > decompressed_checksum   : 0xdd820f28
+  > backward_crc_offset     : 0x0
+  > forward_crc_offset      : 0x83f28
+  > img_crc                 : 0xdd820f28
   > compressed_size         : 0x83f28
   > decompressed_size       : 0xd2fe4
   > field_50                : 0xffffffff
   > field_54                : 0x0
-  > field_58                : 0x1
-  > field_5A                : 0x0
-  > compressed_checksum     : 0xd64aa4fd
+  > crypto_params_index     : 0x1
+  > crypto_params_index 2   : 0x0
+  > header_crc              : 0xd64aa4fd
   > field_60                : 0x0
   > field_64                : 0x0
   > field_68                : 0x0
@@ -507,35 +514,35 @@
 01f0  0f 7c 92 08 a7 24 ac b4 c5 66 8f 46 8c 64 cf 3e   .|...$...f.F.d.>
 
   > fw_magic_end       : 0x4edd4118
+
+[+] header crc ok: 0xd64aa4fd
+[+] image crc ok : 0xdd820f28
+
 output_size : 0x000d2fe4
 
-[+] Extracted ilo4.bin
-
->> skip 0xb8f8
-
->> skip 0xb8d8
+[+] Extracted kernel_main.bin
 
 -------------------------------------------------------------------------------
 [+] iLO Header 5
   > module                  : iLO 5 Kernel 00.09.41
   > fw_magic                : 0x4edd411a
-  > type                    : 0x2
-  > field_28                : 0xb0000
-  > field_2C                : 0x5
-  > field_2C                : 0x5
-  > is_compressed           : 0x1
+  > header_type             : 0x2
+  > field_28                : 0x0
+  > type                    : 0xb
+  > flags                   : 0x5
+  > field_30                : 0x1
   > field_34                : 0x0
   > field_38                : 0xc17
-  > field_3C                : 0x0
-  > field_40                : 0x83f28
-  > decompressed_checksum   : 0xdd820f28
+  > backward_crc_offset     : 0x0
+  > forward_crc_offset      : 0x83f28
+  > img_crc                 : 0xdd820f28
   > compressed_size         : 0x83f28
   > decompressed_size       : 0xd2fe4
   > field_50                : 0xffffffff
   > field_54                : 0x0
-  > field_58                : 0x1
-  > field_5A                : 0x0
-  > compressed_checksum     : 0xd64aa4fd
+  > crypto_params_index     : 0x1
+  > crypto_params_index 2   : 0x0
+  > header_crc              : 0xd64aa4fd
   > field_60                : 0x0
   > field_64                : 0x0
   > field_68                : 0x0
@@ -580,35 +587,35 @@ output_size : 0x000d2fe4
 01f0  0f 7c 92 08 a7 24 ac b4 c5 66 8f 46 8c 64 cf 3e   .|...$...f.F.d.>
 
   > fw_magic_end       : 0x4edd4118
+
+[+] header crc ok: 0xd64aa4fd
+[+] image crc ok : 0xdd820f28
+
 output_size : 0x000d2fe4
 
-[+] Extracted ilo5.bin
-
->> skip 0xb8f8
-
->> skip 0xb8d8
+[+] Extracted kernel_recovery.bin
 
 -------------------------------------------------------------------------------
 [+] iLO Header 6
   > module                  : 1.10.74
   > fw_magic                : 0x4edd411a
-  > type                    : 0x2
-  > field_28                : 0x200000
-  > field_2C                : 0x5
-  > field_2C                : 0x5
-  > is_compressed           : 0x1
+  > header_type             : 0x2
+  > field_28                : 0x0
+  > type                    : 0x20
+  > flags                   : 0x5
+  > field_30                : 0x1
   > field_34                : 0x0
   > field_38                : 0xc41
-  > field_3C                : 0x0
-  > field_40                : 0xccd762
-  > decompressed_checksum   : 0xc90a5ddd
+  > backward_crc_offset     : 0x0
+  > forward_crc_offset      : 0xccd762
+  > img_crc                 : 0xc90a5ddd
   > compressed_size         : 0xccd762
   > decompressed_size       : 0x177206c
   > field_50                : 0xffffffff
   > field_54                : 0x0
-  > field_58                : 0x1
-  > field_5A                : 0x0
-  > compressed_checksum     : 0xc75208a2
+  > crypto_params_index     : 0x1
+  > crypto_params_index 2   : 0x0
+  > header_crc              : 0xc75208a2
   > field_60                : 0x0
   > field_64                : 0x0
   > field_68                : 0x0
@@ -653,35 +660,35 @@ output_size : 0x000d2fe4
 01f0  ae e4 c2 52 4b 03 77 f9 2c b3 11 4c 34 1e 3f 07   ...RK.w.,..L4.?.
 
   > fw_magic_end       : 0x4edd4118
+
+[+] header crc ok: 0xc75208a2
+[+] image crc ok : 0xc90a5ddd
+
 output_size : 0x0177206c
 
-[+] Extracted ilo6.bin
-
->> skip 0xee20be
-
->> skip 0xee209e
+[+] Extracted elf_main.bin
 
 -------------------------------------------------------------------------------
 [+] iLO Header 7
   > module                  : 1.10.74
   > fw_magic                : 0x4edd411a
-  > type                    : 0x2
-  > field_28                : 0x220000
-  > field_2C                : 0x5
-  > field_2C                : 0x5
-  > is_compressed           : 0x1
+  > header_type             : 0x2
+  > field_28                : 0x0
+  > type                    : 0x22
+  > flags                   : 0x5
+  > field_30                : 0x1
   > field_34                : 0x0
   > field_38                : 0xc41
-  > field_3C                : 0x0
-  > field_40                : 0x267f60
-  > decompressed_checksum   : 0x2d0b2292
+  > backward_crc_offset     : 0x0
+  > forward_crc_offset      : 0x267f60
+  > img_crc                 : 0x2d0b2292
   > compressed_size         : 0x267f60
   > decompressed_size       : 0x486ebc
   > field_50                : 0xffffffff
   > field_54                : 0x0
-  > field_58                : 0x1
-  > field_5A                : 0x0
-  > compressed_checksum     : 0x3e0c4173
+  > crypto_params_index     : 0x1
+  > crypto_params_index 2   : 0x0
+  > header_crc              : 0x3e0c4173
   > field_60                : 0x0
   > field_64                : 0x0
   > field_68                : 0x0
@@ -726,20 +733,44 @@ output_size : 0x0177206c
 01f0  20 c1 2e 3f 99 c9 a0 7d 84 b2 15 8e 73 16 70 ad    ..?...}....s.p.
 
   > fw_magic_end       : 0x4edd4118
+
+[+] header crc ok: 0x3e0c4173
+[+] image crc ok : 0x2d0b2292
+
 output_size : 0x00486ebc
 
-[+] Extracted ilo7.bin
-
->> skip 0x-1
+[+] Extracted elf_recovery.bin
 [x] failed to find next module
 
 -------------------------------------------------------------------------------
 [+] Modules summary (8)
-     0)                    neba9 0.9.5  , at 0x00010000
-     1)                     neb926 0.3  , at 0x00020000
-     2)                    neba9 0.9.5  , at 0x00010000
-     3)                     neb926 0.3  , at 0x00020000
-     4)          iLO 5 Kernel 00.09.41  , at 0x000b0000
-     5)          iLO 5 Kernel 00.09.41  , at 0x000b0000
-     6)                        1.10.74  , at 0x00200000
-     7)                        1.10.74  , at 0x00220000
+     0)         Secure Micro Boot 1.01, type 0x03, size 0x00008000, crc 0xe88c2109
+     1)         Secure Micro Boot 1.01, type 0x03, size 0x00004da8, crc 0x8ce8238c
+     2)                    neba9 0.9.5, type 0x01, size 0x00003508, crc 0xc078ff1c
+     3)                     neb926 0.3, type 0x02, size 0x00000ad0, crc 0x4f73621c
+     4)                    neba9 0.9.5, type 0x01, size 0x00003508, crc 0xc078ff1c
+     5)                     neb926 0.3, type 0x02, size 0x00000ad0, crc 0x4f73621c
+     6)          iLO 5 Kernel 00.09.41, type 0x0b, size 0x000d2fe4, crc 0xdd820f28
+     7)          iLO 5 Kernel 00.09.41, type 0x0b, size 0x000d2fe4, crc 0xdd820f28
+     8)                        1.10.74, type 0x20, size 0x0177206c, crc 0xc90a5ddd
+     9)                        1.10.74, type 0x22, size 0x00486ebc, crc 0x2d0b2292
+
+[+] Firmware offset map
+  >                 HP_SIGNED_FILE at 0x00000000
+  >                    HPIMAGE_HDR at 0x00000370
+  >           BOOTLOADER1_MAIN_HDR at 0x00000828
+  >               BOOTLOADER1_MAIN at 0x00001028
+  >       BOOTLOADER1_RECOVERY_HDR at 0x00008828
+  >           BOOTLOADER1_RECOVERY at 0x00009028
+  >           BOOTLOADER2_MAIN_HDR at 0x00010828
+  >               BOOTLOADER2_MAIN at 0x00011028
+  >       BOOTLOADER2_RECOVERY_HDR at 0x00018828
+  >           BOOTLOADER2_RECOVERY at 0x00019028
+  >                KERNEL_MAIN_HDR at 0x00020828
+  >                    KERNEL_MAIN at 0x00021028
+  >            KERNEL_RECOVERY_HDR at 0x000b0828
+  >                KERNEL_RECOVERY at 0x000b1028
+  >                   ELF_MAIN_HDR at 0x00140828
+  >                       ELF_MAIN at 0x00141028
+  >               ELF_RECOVERY_HDR at 0x01cf0828
+  >                   ELF_RECOVERY at 0x01cf1028
