@@ -37,7 +37,7 @@ Results
 -------
 
 One critical vulnerability was identified and reported to the ``HPE PSRT`` in
-February 2017, known as ``CVE-2017-12542`` (``CVSSv3`` 9.8 [3]_) :
+February 2017, known as ``CVE-2017-12542`` (``CVSSv3`` base score 9.8 [3]_) :
 
 * Authentication bypass and remote code execution
 * Fixed in ``iLO4`` versions ``2.53`` (released in May 2017, buggy) and ``2.54`` [4]_
@@ -45,7 +45,7 @@ February 2017, known as ``CVE-2017-12542`` (``CVSSv3`` 9.8 [3]_) :
 
 A second critical vulnerability was identified in  ``iLO4`` and  ``iLO5`` . It
 was reported to the ``HPE PSRT`` in April 2018 and is known as
-``CVE-2018-7078`` (``CVSSv3`` 7.2 [9]_, ``HPE`` Security Bulletin
+``CVE-2018-7078`` (``CVSSv3`` base score 7.2 [9]_, ``HPE`` Security Bulletin
 ``HPESBHF03844`` [10]_) :
 
 * Remote or local code execution
@@ -55,8 +55,8 @@ was reported to the ``HPE PSRT`` in April 2018 and is known as
 
 Finally a critical vulnerability was identified in the implementation of the
 secure boot feature of ``iLO5``. It was reported to the ``HPE PSRT`` in
-September 2018 and is known as ``CVE-2018-7113`` (``CVSSv3`` 7.2 [12]_, ``HPE``
-Security Bulletin ``HPESBHF03894`` [13]_):
+September 2018 and is known as ``CVE-2018-7113`` (``CVSSv3`` base score 6.4 [12]_,
+``HPE`` Security Bulletin ``HPESBHF03894`` [13]_):
 
 * Local Bypass of Security Restrictions
 * Fixed in ``iLO5`` version ``1.37`` (released in October 2018)
@@ -160,6 +160,11 @@ image in which the banner of the ``SSH`` server has been altered.
 .. image:: https://github.com/airbus-seclab/ilo4_toolbox/blob/master/demos/demo5_secure_boot.gif
     :width: 100%
     :align: center
+
+
+A proof of concept implementing the secure boot bypass alone is available in
+``ilo5_PoC_secure_boot_bypass.py``. The ``fum`` vulnerability and ``HP Signed File``
+signature bypass is demonstrated in ``ilo5_PoC_fum_sig_bypass.py``.
 
 
 Tooling
