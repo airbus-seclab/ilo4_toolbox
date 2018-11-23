@@ -55,8 +55,8 @@ was reported to the ``HPE PSRT`` in April 2018 and is known as
 
 Finally a critical vulnerability was identified in the implementation of the
 secure boot feature of ``iLO5``. It was reported to the ``HPE PSRT`` in
-September 2018 and is known as ``CVE-2018-7113`` (``CVSSv3`` 7.2 [9]_, ``HPE``
-Security Bulletin ``HPESBHF03894`` [12]_):
+September 2018 and is known as ``CVE-2018-7113`` (``CVSSv3`` 7.2 [12]_, ``HPE``
+Security Bulletin ``HPESBHF03894`` [13]_):
 
 * Local Bypass of Security Restrictions
 * Fixed in ``iLO5`` version ``1.37`` (released in October 2018)
@@ -238,8 +238,9 @@ Using ``IDA Pro`` to load the extracted file ``ilo1.bin`` at ``0x20001000`` as
 * ``parse_mr.py`` dumps the registered ``Memory Region`` objects
 
 
-``iLO5`` format differs slightly, however the same ``dissection.rb`` script
-can be used to extract the ``Integrity`` applicative image.
+``iLO5`` format differs slightly but is supported as well. ``ilo5_extract.py``
+and  ``dissection.rb`` scripts can be used in the same way as for ``iLO4`` to
+extract the ``Integrity`` applicative image.
 
 
 Firmware backdooring
@@ -377,7 +378,8 @@ References
 .. [9] https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-7078
 .. [10] https://support.hpe.com/hpsc/doc/public/display?docId=emr_na-hpesbhf03844en_us
 .. [11] https://2018.zeronights.ru/en/reports/turning-your-bmc-into-a-revolving-door/
-.. [12] https://support.hpe.com/hpsc/doc/public/display?docId=hpesbhf03894en_us
+.. [12] https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-7113
+.. [13] https://support.hpe.com/hpsc/doc/public/display?docId=hpesbhf03894en_us
 .. [GPLv2] https://github.com/airbus-seclab/ilo4_toolbox/blob/master/COPYING
 .. _here: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/RECONBRX2018-Slides-Subverting_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
 .. _location: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/SSTIC2018-Slides-EN-Backdooring_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
