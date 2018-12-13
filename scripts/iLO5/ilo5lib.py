@@ -199,10 +199,12 @@ class ImageHeader(LittleEndianStructure):
         print "  > fw_magic_end       : 0x%x" % self.fw_magic_end
 
 # decompress extracted images
-window=['\0']*0x1000
-wchar = 0
-
 def decompress_all(data,fname,chunks=0x10000):
+    global window,wchar
+
+    window=['\0']*0x1000
+    wchar = 0
+
     fff = open(fname, "wb")
 
     while len(data)>0:

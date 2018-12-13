@@ -136,11 +136,14 @@ class ImgHeader(LittleEndianStructure):
         print "  > signature"
         print hexdump(self.to_str(self.signature))
 
-# decompress extracted images
-window=['\0']*0x1000
-wchar = 0
 
+# decompress extracted images
 def decompress_all(data,fname,chunks=0x10000):
+    global window,wchar
+
+    window=['\0']*0x1000
+    wchar = 0
+
     fff = open(fname, "wb")
 
     while len(data)>0:
