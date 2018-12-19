@@ -11,8 +11,8 @@ start:
 	MOV		R0, SP
 	BL		bzero
 
-        MOV     	R0, #8
-        BL     		memmap
+	MOV     	R0, #8
+	BL     		memmap
 	
 	MOV		R0, R7
 	LDR		R10, get_query_string
@@ -21,7 +21,7 @@ start:
 	CMP             R0, #0
 	BEQ		error_400
 
-	MOV		R2, #0x100
+	MOV		R2, #0x1000
 	MOV		R1, R0
 	BL		get_storage
 	ADD		R0, R0, #0x2000
@@ -463,6 +463,8 @@ check_wmem_size:
 	LDR		R1, [SP, #0xF0]
 	CMP		R1, #0
 	BEQ		err_wmem
+	CMP     R1, #0xffffffff
+	BEQ		err_wmem
 
 do_wmem:
 	LDR		R3, [SP, #0xF0]
@@ -553,24 +555,24 @@ dmp_host:
 	MOV		R0, R6
 	BL		go_200_headers
 		
-        LDR     	R0, [SP, #0x10]
-        MOV     	R2, #0
-        MOV     	R1, R2
-        BL	     	WaitForSemaphore
+	LDR     	R0, [SP, #0x10]
+	MOV     	R2, #0
+	MOV     	R1, R2
+	BL	     	WaitForSemaphore
 
-        MOV     	R0, #2
-        STR     	R0, [SP, #0x14]
+	MOV     	R0, #2
+	STR     	R0, [SP, #0x14]
 
 dmp_host_loop:
 	MOV     	R3, R8, LSL #8
-        ORR     	R2, R3, R7, LSR #24
-        LDRB    	R3, [SP, #0x14]
+	ORR     	R2, R3, R7, LSR #24
+	LDRB    	R3, [SP, #0x14]
 	BIC     	R2, R2, #0xFF000000
-        ORR     	R2, R2, R3, LSL #24
-        BL		get_pcireg
-        STR     	R2, [R0]
-        BIC     	R2, R7, #0xFF000000
-        ADD     	R0, R2, #0x81000000
+	ORR     	R2, R2, R3, LSL #24
+	BL		get_pcireg
+	STR     	R2, [R0]
+	BIC     	R2, R7, #0xFF000000
+	ADD     	R0, R2, #0x81000000
 
 	STR		R0, [SP, #0xC]
 
@@ -595,8 +597,14 @@ dmp_host_loop:
 	B 		dmp_host_loop
 	
 dmp_host_end:
-        LDR     	R0, [SP, #0x10]
-        BL     		ReleaseSemaphore
+	LDR     	R0, [SP, #0x10]
+	BL     		ReleaseSemaphore
+
+	LDR     	R0, [SP, #0x10]
+	BL     		ReleaseResource
+
+	LDR     	R0, [SP]
+	BL     		ReleaseResource
 	
 	MOV		R0, R6
 	BL		go_200_close
@@ -637,23 +645,23 @@ wmem_host:
 	ADD 		R0, SP, #0x10
 	BL 		RequestResource
 
-        LDR     	R0, [SP, #0x10]
-        MOV     	R2, #0
-        MOV     	R1, R2
-        BL	     	WaitForSemaphore
+	LDR     	R0, [SP, #0x10]
+	MOV     	R2, #0
+	MOV     	R1, R2
+	BL	     	WaitForSemaphore
 
-        MOV     	R0, #2
-        STR     	R0, [SP, #0x14]
+	MOV     	R0, #2
+	STR     	R0, [SP, #0x14]
 
 	MOV     	R3, R8, LSL #8
-        ORR     	R2, R3, R7, LSR #24
-        LDRB    	R3, [SP, #0x14]
+	ORR     	R2, R3, R7, LSR #24
+	LDRB    	R3, [SP, #0x14]
 	BIC     	R2, R2, #0xFF000000
-        ORR     	R2, R2, R3, LSL #24
-        BL		get_pcireg
-        STR     	R2, [R0]
-        BIC     	R2, R7, #0xFF000000
-        ADD     	R0, R2, #0x81000000
+	ORR     	R2, R2, R3, LSL #24
+	BL		get_pcireg
+	STR     	R2, [R0]
+	BIC     	R2, R7, #0xFF000000
+	ADD     	R0, R2, #0x81000000
 
 	STR		R0, [SP, #0xC]
 
@@ -665,7 +673,13 @@ wmem_host:
 	BL 		CopyToMemoryRegion
 
 	LDR     	R0, [SP, #0x10]
-        BL     		ReleaseSemaphore
+	BL     		ReleaseSemaphore
+
+	LDR     	R0, [SP, #0x10]
+	BL     		ReleaseResource
+
+	LDR     	R0, [SP]
+	BL     		ReleaseResource
 
 	MOV		R0, R6
 	BL		go_200_headers
@@ -709,6 +723,11 @@ RequestResource:
 	LDR		R10, RequestResource_fn
 	BX 		R10
 RequestResource_fn: 	.word 0x17A3948
+
+ReleaseResource:
+	LDR		R10, ReleaseResource_fn
+	BX 		R10
+ReleaseResource_fn: 	.word 0x17808FC
 
 WaitForSemaphore:	
 	LDR		R10, WaitForSemaphore_fn
