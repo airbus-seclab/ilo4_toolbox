@@ -10,11 +10,36 @@ FIRMWARE=$1
 
 rm -rf outdir
 
-python $DIR/ilo4_extract.py $FIRMWARE outdir
-python $DIR/patch_bootloader_250.py outdir/bootloader.bin
-python $DIR/patch_kernel_250.py outdir/kernel_main.bin
-python $DIR/patch_webserver_250.py outdir/elf.bin
+python2.7 $DIR/ilo4_extract.py $FIRMWARE outdir
+if [ $? != 0 ];
+then
+    echo "ERROR: ilo4_extract.py failed"
+    exit 1
+fi
+python2.7 $DIR/patch_bootloader_250.py outdir/bootloader.bin
+if [ $? != 0 ];
+then
+    echo "ERROR: patch_bootloader_250.py failed"
+    exit 1
+fi
+python2.7 $DIR/patch_kernel_250.py outdir/kernel_main.bin
+if [ $? != 0 ];
+then
+    echo "ERROR: patch_kernel_250.py failed"
+    exit 1
+fi
+python2.7 $DIR/patch_webserver_250.py outdir/elf.bin
+if [ $? != 0 ];
+then
+    echo "ERROR: patch_webserver_250.py failed"
+    exit 1
+fi
 
-python $DIR/ilo4_repack.py $FIRMWARE outdir/firmware.map outdir/elf.bin.patched outdir/kernel_main.bin.patched outdir/bootloader.bin.patched
+python2.7 $DIR/ilo4_repack.py $FIRMWARE outdir/firmware.map outdir/elf.bin.patched outdir/kernel_main.bin.patched outdir/bootloader.bin.patched
+if [ $? != 0 ];
+then
+    echo "ERROR: ilo4_repack.py failed"
+    exit 1
+fi
 
 echo "[+] Firmware ready to be flashed"
