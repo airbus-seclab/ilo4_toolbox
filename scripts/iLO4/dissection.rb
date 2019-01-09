@@ -103,6 +103,19 @@ class TaskInfo < BinData::Record
 end
 
 
+class TaskInfoLegacy < BinData::Record
+    endian :little
+    uint32 :task_type
+    uint32 :virt_space_size
+    uint32 :virt_space
+    uint32 :dw4
+    uint32 :dw5
+    uint32 :dw6
+    uint32 :dw7
+    uint32 :dw8
+end
+
+
 class VirtRange < BinData::Record
     endian :little
     uint32 :dw1
@@ -203,7 +216,7 @@ EOS
 end
 
 
-def list_boottable(elf, sections)
+def list_boottable(elf, sections, legacy)
     task_list = [TaskDef.new('Integrity')]
     shared_mod = {}
 
@@ -253,7 +266,12 @@ def list_boottable(elf, sections)
     task_info_list_offset = hdr.ptr_task_info_list - boot_sec.addr
 
     hdr.tasks_count.times{|i|
-        task_info = TaskInfo.read(enc[task_info_list_offset, 0x40])
+        if legacy
+            task_info = TaskInfoLegacy.read(enc[task_info_list_offset, 0x40])
+        else
+            task_info = TaskInfo.read(enc[task_info_list_offset, 0x40])
+        end
+
         task_info_list_offset += task_info.num_bytes
 
         puts "> task 0x%02x (%s) - 0x%08x entries" % [i, task_list[i].name, task_info.virt_space_size]
@@ -339,6 +357,24 @@ def extract_mods(elf_file)
 end
 
 
+# iLO4 firmware older than iLO4 1.20 are build
+# with Integrity 5.0.11 and use different task structs.
+def legacy_heuristic(elf)
+    legacy = false
+    secinfo = elf.sections.find{|sec| sec.name == '.libsslc.so.text'}
+    return legacy if not secinfo
+
+    enc =  elf.encoded[secinfo.offset, secinfo.size]
+
+    if (/integrityghsint5011/ =~ enc.data)
+        legacy = true
+        puts "\n> found legacy firmware, Integrity 5.0.11\n"
+    end
+
+    return legacy
+end
+
+
 elf_file = ARGV.shift
 abort "[x] usage: #{__FILE__} elf_file" unless elf_file
 abort "[x] #{elf_file} not found " unless File.exists? elf_file
@@ -351,5 +387,7 @@ elf.decode_sections
 # get all sections from ELF '.secinfo'
 sections = list_sections(elf)
 
+legacy = legacy_heuristic(elf)
+
 # parse '.boottable'
-list_boottable(elf, sections)
+list_boottable(elf, sections, legacy)
