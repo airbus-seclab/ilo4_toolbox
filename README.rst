@@ -167,6 +167,29 @@ A proof of concept implementing the secure boot bypass alone is available in
 signature bypass is demonstrated in ``ilo5_PoC_fum_sig_bypass.py``.
 
 
+Related works
+-------------
+
+A critical vulnerability was identified by Nicolas Iooss from The French
+National Cybersecurity Agency (ANSSI) in the ``SSH`` service of ``iLO3``,
+``iLO4`` and  ``iLO5`` . It was reported to the ``HPE PSRT`` in April 2018 and
+is known as ``CVE-2018-7105 `` (``CVSSv3`` base score 7.2 [14]_, ``HPE``
+Security Bulletin ``HPESBHF03866`` [15]_) :
+
+* Remote execution of arbitrary code, local disclosure of sensitive information
+* Fixed in ``iLO3`` version ``1.90`` (released in August 2018)
+* Fixed in ``iLO4`` version ``2.61`` (released in September 2018)
+* Fixed in ``iLO5`` version ``1.35`` (released in August 2018)
+
+Thank you Nicolas for sharing test and exploitation scripts for this issue.
+
+Using this vulnerability it is also possible to play with ``PCILeech`` on
+``HP iLO4`` without the need for a modified firmware. Although very slow for
+a big memory dump, it works very well when targeting specific memory location, as
+done by the Windows KMD load in ``PCILeech``. See the ``PCILeech HP iLO4
+Service`` repository [16]_.
+
+
 Tooling
 -------
 
@@ -385,6 +408,9 @@ References
 .. [11] https://2018.zeronights.ru/en/reports/turning-your-bmc-into-a-revolving-door/
 .. [12] https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-7113
 .. [13] https://support.hpe.com/hpsc/doc/public/display?docId=hpesbhf03894en_us
+.. [14] https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-7105
+.. [15] https://support.hpe.com/hpsc/doc/public/display?docId=hpesbhf03866en_us
+.. [16] https://github.com/Synacktiv/pcileech_hpilo4_service
 .. [GPLv2] https://github.com/airbus-seclab/ilo4_toolbox/blob/master/COPYING
 .. _here: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/RECONBRX2018-Slides-Subverting_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
 .. _location: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/SSTIC2018-Slides-EN-Backdooring_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
