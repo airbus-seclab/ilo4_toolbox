@@ -135,7 +135,7 @@ channel to execute arbitrary commands on the host system.
 ZeroNights 2018
 ***************
 
-The material we presented as **ZeroNights** is available from there_. It
+The material we presented at **ZeroNights** is available from there_. It
 contains two major contributions.
 
 First, an analysis of the communication channel between the host system and
@@ -167,13 +167,26 @@ A proof of concept implementing the secure boot bypass alone is available in
 signature bypass is demonstrated in ``ilo5_PoC_fum_sig_bypass.py``.
 
 
+
+Insomni’Hack 2019
+*****************
+
+The slides from our talk at **Insomni’Hack**, available from this link_,
+intend to wrap-up most of our work on the ``iLO 4`` and  ``5`` systems.
+
+A brief analysis of the anti-downgrade feature is introduced, as well as a
+teaser on the whitepaper_ we published in collaboration with Adrien Guinet
+(from Quarkslab) on *How to defeat NotPetya from your iLO4*.
+
+
+
 Related works
 -------------
 
 A critical vulnerability was identified by Nicolas Iooss from The French
 National Cybersecurity Agency (ANSSI) in the ``SSH`` service of ``iLO3``,
 ``iLO4`` and  ``iLO5`` . It was reported to the ``HPE PSRT`` in April 2018 and
-is known as ``CVE-2018-7105 `` (``CVSSv3`` base score 7.2 [14]_, ``HPE``
+is known as ``CVE-2018-7105`` (``CVSSv3`` base score 7.2 [14]_, ``HPE``
 Security Bulletin ``HPESBHF03866`` [15]_) :
 
 * Remote execution of arbitrary code, local disclosure of sensitive information
@@ -416,3 +429,6 @@ References
 .. _location: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/SSTIC2018-Slides-EN-Backdooring_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
 .. _paper: https://airbus-seclab.github.io/ilo/SSTIC2018-Article-subverting_your_server_through_its_bmc_the_hpe_ilo4_case-gazet_perigaud_czarny.pdf
 .. _there: https://airbus-seclab.github.io/ilo/ZERONIGHTS2018-Slides-EN-Turning_your_BMC_into_a_revolving_door-perigaud-gazet-czarny.pdf
+.. _link: https://airbus-seclab.github.io/ilo/INSOMNIHACK2019-Slides-Riding_the_lightning_iLO4_5_BMC_security_wrapup-perigaud-gazet-czarny.pdf
+.. _whitepaper: https://airbus-seclab.github.io/ilo/Whitepaper-Defeating_NotPetya_from_your_iLO4-guinet-perigaud-gazet-czarny.pdf
+
