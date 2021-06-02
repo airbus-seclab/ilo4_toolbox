@@ -53,13 +53,19 @@ was reported to the ``HPE PSRT`` in April 2018 and is known as
 * Fixed in ``iLO5`` version ``1.30`` (released in June 2018)
 
 
-Finally a critical vulnerability was identified in the implementation of the
+A critical vulnerability was identified in the implementation of the
 secure boot feature of ``iLO5``. It was reported to the ``HPE PSRT`` in
 September 2018 and is known as ``CVE-2018-7113`` (``CVSSv3`` base score 6.4 [12]_,
 ``HPE`` Security Bulletin ``HPESBHF03894`` [13]_):
 
 * Local Bypass of Security Restrictions
 * Fixed in ``iLO5`` version ``1.37`` (released in October 2018)
+
+
+Finally another critical vulnerability allowing host to iLO arbitrary code
+execution was reported to ``HPE`` in Feb 2021 and is known as
+``CVE-2021-29202``(``CVSSv3`` base score 6.4, ``HPE`` Security Bulletins
+``HPESBHF04121``[19]_ and ``HPESBHF04133`` [20]_).
 
 
 Slides and demos
@@ -177,6 +183,21 @@ intend to wrap-up most of our work on the ``iLO 4`` and  ``5`` systems.
 A brief analysis of the anti-downgrade feature is introduced, as well as a
 teaser on the whitepaper_ we published in collaboration with Adrien Guinet
 (from Quarkslab) on *How to defeat NotPetya from your iLO4*.
+
+
+
+SSTIC 2021
+**********
+
+In this new iteration of our work, presented at SSTIC (paper[17]_ and slides
+[18]_), we propose an extensive analysis of the new firmware encryption
+mechanism introduced with HPE iLO5 firmware versions 2.x. The new boot chain,
+as well as the cryptographic co-processor this feature relies upon are
+presented, as well as our attack to extract the encryption keys from the
+system-on-chip(SOC).
+
+
+
 
 
 
@@ -424,6 +445,10 @@ References
 .. [14] https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-7105
 .. [15] https://support.hpe.com/hpsc/doc/public/display?docId=hpesbhf03866en_us
 .. [16] https://github.com/Synacktiv/pcileech_hpilo4_service
+.. [17] https://airbus-seclab.github.io/ilo/SSTIC2021-Article-hpe_ilo_5_security_go_home_cryptoprocessor_youre_drunk-gazet_perigaud_czarny.pdf
+.. [18] https://airbus-seclab.github.io/ilo/SSTIC2021-Slides-hpe_ilo_5_security_go_home_cryptoprocessor_youre_drunk-gazet_perigaud_czarny.pdf
+.. [19] https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbhf04121en_us
+.. [20] https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbhf04133en_us
 .. [GPLv2] https://github.com/airbus-seclab/ilo4_toolbox/blob/master/COPYING
 .. _here: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/RECONBRX2018-Slides-Subverting_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
 .. _location: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/SSTIC2018-Slides-EN-Backdooring_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
