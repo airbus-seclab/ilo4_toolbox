@@ -64,8 +64,9 @@ September 2018 and is known as ``CVE-2018-7113`` (``CVSSv3`` base score 6.4 [12]
 
 Finally another critical vulnerability allowing host to iLO arbitrary code
 execution was reported to ``HPE`` in Feb 2021 and is known as
-``CVE-2021-29202``(``CVSSv3`` base score 6.4, ``HPE`` Security Bulletins
-``HPESBHF04121``[19]_ and ``HPESBHF04133`` [20]_).
+``CVE-2021-29202`` (``CVSSv3`` base score 6.4, ``HPE`` Security Bulletins
+``HPESBHF04121`` [19]_ and ``HPESBHF04133`` [20]_). It impacts ``iLO4`` and
+``iLO5``.
 
 
 Slides and demos
@@ -189,7 +190,7 @@ teaser on the whitepaper_ we published in collaboration with Adrien Guinet
 SSTIC 2021
 **********
 
-In this new iteration of our work, presented at SSTIC (paper[17]_ and slides
+In this new iteration of our work, presented at SSTIC (paper [17]_ and slides
 [18]_), we propose an extensive analysis of the new firmware encryption
 mechanism introduced with HPE iLO5 firmware versions 2.x. The new boot chain,
 as well as the cryptographic co-processor this feature relies upon are
