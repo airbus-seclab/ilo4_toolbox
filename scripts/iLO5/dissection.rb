@@ -269,7 +269,7 @@ def list_boottable(elf, sections)
             # resolve virt_range id to a section name
             modinfo = ''
             if virt_range.mod_id != 0xffffffff
-                sec_map = sections[virt_range.mod_id-1]
+                sec_map = sections[virt_range.mod_id - hdr.size_initial]
 
                 if sec_map
                     modinfo = "- %s" % sec_map.name
