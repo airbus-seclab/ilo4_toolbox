@@ -11,7 +11,7 @@ include Metasm
 SCRIPT_DIR = 'scripts'
 MOD_DIR = 'mods'
 LOADER_DIR = 'loaders'
-IDA_PATH = 'C:\Program Files\IDA 7.1\ida.exe'
+IDA_PATH = 'C:\Program Files\IDA Pro 7.6\ida.exe'
 
 
 class SectionInfo < BinData::Record
@@ -147,6 +147,7 @@ class TaskDef
 #!/usr/bin/python
 import os
 import os.path
+import ida_idp
 
 MOD_DIR = 'mods'
 
@@ -156,46 +157,47 @@ EOS
         fd.puts <<EOS
 ]
 
-idaapi.set_processor_type("arm", SETPROC_ALL|SETPROC_FATAL)
-
 for seg in segments:
 
     try:
         name, base, size, type = seg
-        print "loading segment: %30s 0x%08x 0x%08x 0x%x" % (name, base, size, type)
+        print("loading segment: %30s 0x%08x 0x%08x 0x%x" % (name, base, size, type))
 
         # saAbs: Absolute segment
         # scPub: Public. Combine by appending at an offset that meets the alignment requirement
         idc.AddSeg(base, base+size, 0, 1, idaapi.saAbs, idaapi.scPub)
 
-        print "  > new segment created"
+        print("  > new segment created")
 
         if ".RO" in name:
-            idc.SetSegmentType(base, idc.SEG_CODE)
-            idc.SetSegmentAttr(base, idc.SEGATTR_PERM, 4 | 1);  #RX
-            print "  > SEG_CODE"
+            idc.set_segm_type(base, idc.SEG_CODE)
+            idc.set_segm_attr(base, idc.SEGATTR_PERM, 4 | 1);  #RX
+            print("  > SEG_CODE")
         elif ".RW2" in name:
-            idc.SetSegmentType(base, idc.SEG_BSS)
-            idc.SetSegmentAttr(base, idc.SEGATTR_PERM, 2 | 4);  #RW
-            print "  > SEG_BSS"
+            idc.set_segm_type(base, idc.SEG_BSS)
+            idc.set_segm_attr(base, idc.SEGATTR_PERM, 2 | 4);  #RW
+            print("  > SEG_BSS")
         else:
-            idc.SetSegmentType(base, idc.SEG_DATA)
-            idc.SetSegmentAttr(base, idc.SEGATTR_PERM, 2 | 4);  #RW
-            print "  > SEG_DATA"
+            idc.set_segm_type(base, idc.SEG_DATA)
+            idc.set_segm_attr(base, idc.SEGATTR_PERM, 2 | 4);  #RW
+            print("  > SEG_DATA")
 
-        idc.RenameSeg(base, name)
+        idc.set_segm_name(base, name)
 
         mod_path = name
-        print mod_path
 
         if os.path.exists(mod_path) and type != 0xC:
             data = open(mod_path, 'rb').read()
-            idaapi.put_many_bytes(base, data)
-            print "  > segment loaded"
+            idaapi.put_bytes(base, data)
+            plan_and_wait(base, base+size)
+            print("  > segment loaded")
+
 
     except:
-        print sys.exc_info()
-        print "Error with file %s" % name
+        print(sys.exc_info())
+        print("Error with file %s" % name)
+
+plan_and_wait(0, BADADDR)
 EOS
         }
     end
@@ -267,7 +269,7 @@ def list_boottable(elf, sections)
             # resolve virt_range id to a section name
             modinfo = ''
             if virt_range.mod_id != 0xffffffff
-                sec_map = sections[virt_range.mod_id - hdr.size_initial]
+                sec_map = sections[virt_range.mod_id-1]
 
                 if sec_map
                     modinfo = "- %s" % sec_map.name

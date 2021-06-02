@@ -7,25 +7,25 @@ import uuid
 import binascii
 
 DEVICES = {
-    uuid.UUID("9d7b312fe3c9764dbff6b9d0d085a952") : "ILO",
-    uuid.UUID("2e8d14aa096e3e45bc6f63baa5f5ccc4") : "SYSTEM_ROM",
-    uuid.UUID("066df4b8db855c4694fbd106e61378ed") : "APML",
-    uuid.UUID("9a43adb1d19dc141a4962da9313f1f07") : "CPLD",
-    uuid.UUID("8aa2489e6c5819458405a04f84e27f0f") : "PIC",
-    uuid.UUID("90aa533689703a45899c792827a50d67") : "NVME_BP_PIC",
-    uuid.UUID("7760b86b75021446aae186618e8b1c27") : "POWER_SUPPLY",
-    uuid.UUID("dffc32e2cbbc5347a99bf6b11c6eb074") : "EEPROM_I2C",
-    uuid.UUID("18077fda4c441c49b9bfb5a9ccc5e6e8") : "FILES",
-    uuid.UUID("0c4c1027c53a91498afbd1f3cd166fb4") : "LANGUAGE_PACK",
-    uuid.UUID("71e134c72187c9489ed6d5bc7da5ef8d") : "INNOVATION_ENG",
-    uuid.UUID("77564eb3dc21d345872b42f76fee9053") : "MANAGEMENT_ENG",
-    uuid.UUID("e08ef28323841647ad1d878d0e5f5e21") : "VRD",
-    uuid.UUID("4a4247f5ffa41540b986fc45d424731f") : "LOAD_MODULE",
-    uuid.UUID("74c3639815012d4998688894c86c4513") : "PLDM",
-    uuid.UUID("be70fc4287bbdb4b8e7cdb1c9af52957") : "COBOURG",
-    uuid.UUID("c14c6fe6d99d8140921cff190388b7a8") : "TEST_SERVER",
-    uuid.UUID("757797961ad2fc4b89f32dd085136fb6") : "EMB_MEDIA",
-    uuid.UUID("c6b649e9bbcac8418ed1e4c28e602496") : "LICENSING"
+    uuid.UUID("9d7b312fe3c9764dbff6b9d0d085a952"): "ILO",
+    uuid.UUID("2e8d14aa096e3e45bc6f63baa5f5ccc4"): "SYSTEM_ROM",
+    uuid.UUID("066df4b8db855c4694fbd106e61378ed"): "APML",
+    uuid.UUID("9a43adb1d19dc141a4962da9313f1f07"): "CPLD",
+    uuid.UUID("8aa2489e6c5819458405a04f84e27f0f"): "PIC",
+    uuid.UUID("90aa533689703a45899c792827a50d67"): "NVME_BP_PIC",
+    uuid.UUID("7760b86b75021446aae186618e8b1c27"): "POWER_SUPPLY",
+    uuid.UUID("dffc32e2cbbc5347a99bf6b11c6eb074"): "EEPROM_I2C",
+    uuid.UUID("18077fda4c441c49b9bfb5a9ccc5e6e8"): "FILES",
+    uuid.UUID("0c4c1027c53a91498afbd1f3cd166fb4"): "LANGUAGE_PACK",
+    uuid.UUID("71e134c72187c9489ed6d5bc7da5ef8d"): "INNOVATION_ENG",
+    uuid.UUID("77564eb3dc21d345872b42f76fee9053"): "MANAGEMENT_ENG",
+    uuid.UUID("e08ef28323841647ad1d878d0e5f5e21"): "VRD",
+    uuid.UUID("4a4247f5ffa41540b986fc45d424731f"): "LOAD_MODULE",
+    uuid.UUID("74c3639815012d4998688894c86c4513"): "PLDM",
+    uuid.UUID("be70fc4287bbdb4b8e7cdb1c9af52957"): "COBOURG",
+    uuid.UUID("c14c6fe6d99d8140921cff190388b7a8"): "TEST_SERVER",
+    uuid.UUID("757797961ad2fc4b89f32dd085136fb6"): "EMB_MEDIA",
+    uuid.UUID("c6b649e9bbcac8418ed1e4c28e602496"): "LICENSING"
 }
 
 TARGETS = {
@@ -50,15 +50,17 @@ TARGETS = {
     uuid.UUID("47a4b1a62a384f5affffffffffffffff"): "ME_ID",
 }
 
+
 def hexdump(src, length=16):
     FILTER = ''.join([(len(repr(chr(x))) == 3) and chr(x) or '.' for x in range(256)])
     lines = []
-    for c in xrange(0, len(src), length):
+    for c in range(0, len(src), length):
         chars = src[c:c+length]
-        hex = ' '.join(["%02x" % ord(x) for x in chars])
-        printable = ''.join(["%s" % ((ord(x) <= 127 and FILTER[ord(x)]) or '.') for x in chars])
-        lines.append("%04x  %-*s  %s\n" % (c, length*3, hex, printable))
+        hexstr = ' '.join(["%02x" % (x & 0xff) for x in chars])
+        printable = ''.join(["%s" % ((x <= 127 and FILTER[x]) or '.') for x in chars])
+        lines.append("%04x  %-*s  %s\n" % (c, length*3, hexstr, printable))
     return ''.join(lines)
+
 
 def check_header_crc(hdr, img):
     crc = (zlib.crc32(hdr[:0x58] + hdr[0x60:0x100]) & 0xffffffff)
@@ -67,12 +69,14 @@ def check_header_crc(hdr, img):
         print("[x] failed to check header crc: 0x%08x" % img.header_crc)
         sys.exit()
 
+
 def check_img_crc(mod, img):
     crc = (zlib.crc32(mod) & 0xffffffff)
     print("[+] image crc ok : 0x%08x\n" % crc)
     if crc != img.img_crc:
         print("[x] failed to check image crc: 0x%08x" % img.img_crc)
     return crc
+
 
 class HpImageHeader(LittleEndianStructure):
 
@@ -97,33 +101,33 @@ class HpImageHeader(LittleEndianStructure):
     ]
 
     def to_str(self, byte_array):
-        return str(bytearray(byte_array))
+        return bytearray(byte_array).decode()
 
     def dump(self):
-        print "  > img_magic          : %s" % self.to_str(self.img_magic)
-        print "  > version major      : 0x%x" % self.major
-        print "  > version minor      : 0x%x" % self.minor
-        print "  > field_A            : 0x%02x" % self.field_A
+        print("  > img_magic          : %s" % self.to_str(self.img_magic))
+        print("  > version major      : 0x%x" % self.major)
+        print("  > version minor      : 0x%x" % self.minor)
+        print("  > field_A            : 0x%02x" % self.field_A)
 
         dev = ""
-        id = uuid.UUID(self.to_str(self.device_id).encode("hex"))
+        id = uuid.UUID(bytearray(self.device_id).hex())
         if id in DEVICES:
             dev = DEVICES[id]
 
-        print "  > device id          : %s" % dev
-        print hexdump(self.to_str(self.device_id))
-        print "  > field_1C            : 0x%x" % self.field_1C
-        print "  > field_20            : 0x%x" % self.field_20
-        print "  > field_24            : 0x%x" % self.field_24
-        print "  > field_28            : 0x%x" % self.field_28
-        print "  > field_2C            : 0x%x" % self.field_2C
-        print "  > field_30            : 0x%x" % self.field_30
-        print "  > field_34            : 0x%x" % self.field_34
-        print "  > field_38            : 0x%x" % self.field_38
-        print "  > field_3C            : 0x%x" % self.field_3C
-        print "  > version             : %s" % self.to_str(self.version)
-        print "  > name                : %s" % self.to_str(self.name)
-        print "  > gap"
+        print("  > device id          : %s" % dev)
+        print(hexdump(bytearray(self.device_id)))
+        print("  > field_1C            : 0x%x" % self.field_1C)
+        print("  > field_20            : 0x%x" % self.field_20)
+        print("  > field_24            : 0x%x" % self.field_24)
+        print("  > field_28            : 0x%x" % self.field_28)
+        print("  > field_2C            : 0x%x" % self.field_2C)
+        print("  > field_30            : 0x%x" % self.field_30)
+        print("  > field_34            : 0x%x" % self.field_34)
+        print("  > field_38            : 0x%x" % self.field_38)
+        print("  > field_3C            : 0x%x" % self.field_3C)
+        print("  > version             : %s" % self.to_str(self.version))
+        print("  > name                : %s" % self.to_str(self.name))
+        print("  > gap")
 
 
 class ImageHeader(LittleEndianStructure):
@@ -163,58 +167,59 @@ class ImageHeader(LittleEndianStructure):
     ]
 
     def to_str(self, byte_array):
-        return str(bytearray(byte_array))
+        return bytearray(byte_array).decode()
 
     def dump(self):
-        print "  > module                  : %s" % self.to_str(self.module)
-        print "  > fw_magic                : 0x%x" % self.fw_magic
-        print "  > header_type             : 0x%x" % self.header_type
-        print "  > field_28                : 0x%x" % self.field_28
-        print "  > type                    : 0x%x" % self.type
-        print "  > flags                   : 0x%x" % self.flags
-        print "  > field_30                : 0x%x" % self.field_30
-        print "  > field_34                : 0x%x" % self.field_34
-        print "  > field_38                : 0x%x" % self.field_38
-        print "  > backward_crc_offset     : 0x%x" % self.backward_crc_offset
-        print "  > forward_crc_offset      : 0x%x" % self.forward_crc_offset
-        print "  > img_crc                 : 0x%x" % self.img_crc
-        print "  > compressed_size         : 0x%x" % self.compressed_size
-        print "  > decompressed_size       : 0x%x" % self.decompressed_size
-        print "  > field_50                : 0x%x" % self.field_50
-        print "  > field_54                : 0x%x" % self.field_54
-        print "  > crypto_params_index     : 0x%x" % self.crypto_params_index
-        print "  > crypto_params_index 2   : 0x%x" % self.crypto_params_index2
-        print "  > header_crc              : 0x%x" % self.header_crc
-        print "  > field_60                : 0x%x" % self.field_60
-        print "  > field_64                : 0x%x" % self.field_64
-        print "  > field_68                : 0x%x" % self.field_68
-        print "  > field_6C                : 0x%x" % self.field_6C
-        print "  > field_70                : 0x%x" % self.field_70
-        print "  > field_74                : 0x%x" % self.field_74
-        print "  > field_78                : 0x%x" % self.field_78
-        print "  > field_7C                : 0x%x" % self.field_7C
-        print "  > copyright               : %s" % self.to_str(self.copyright)
-        print "  > signature"
-        print hexdump(self.to_str(self.signature))
-        print "  > fw_magic_end       : 0x%x" % self.fw_magic_end
+        print("  > module                  : %s" % self.to_str(self.module))
+        print("  > fw_magic                : 0x%x" % self.fw_magic)
+        print("  > header_type             : 0x%x" % self.header_type)
+        print("  > field_28                : 0x%x" % self.field_28)
+        print("  > type                    : 0x%x" % self.type)
+        print("  > flags                   : 0x%x" % self.flags)
+        print("  > field_30                : 0x%x" % self.field_30)
+        print("  > field_34                : 0x%x" % self.field_34)
+        print("  > field_38                : 0x%x" % self.field_38)
+        print("  > backward_crc_offset     : 0x%x" % self.backward_crc_offset)
+        print("  > forward_crc_offset      : 0x%x" % self.forward_crc_offset)
+        print("  > img_crc                 : 0x%x" % self.img_crc)
+        print("  > compressed_size         : 0x%x" % self.compressed_size)
+        print("  > decompressed_size       : 0x%x" % self.decompressed_size)
+        print("  > field_50                : 0x%x" % self.field_50)
+        print("  > field_54                : 0x%x" % self.field_54)
+        print("  > crypto_params_index     : 0x%x" % self.crypto_params_index)
+        print("  > crypto_params_index 2   : 0x%x" % self.crypto_params_index2)
+        print("  > header_crc              : 0x%x" % self.header_crc)
+        print("  > field_60                : 0x%x" % self.field_60)
+        print("  > field_64                : 0x%x" % self.field_64)
+        print("  > field_68                : 0x%x" % self.field_68)
+        print("  > field_6C                : 0x%x" % self.field_6C)
+        print("  > field_70                : 0x%x" % self.field_70)
+        print("  > field_74                : 0x%x" % self.field_74)
+        print("  > field_78                : 0x%x" % self.field_78)
+        print("  > field_7C                : 0x%x" % self.field_7C)
+        print("  > copyright               : %s" % self.to_str(self.copyright))
+        print("  > signature")
+        print(hexdump(self.signature))
+        print("  > fw_magic_end       : 0x%x" % self.fw_magic_end)
+
 
 # decompress extracted images
-def decompress_all(data,fname,chunks=0x10000):
-    global window,wchar
+def decompress_all(data, fname, chunks=0x10000):
+    global window, wchar
 
-    window=['\0']*0x1000
+    window = bytearray(0x1000)
     wchar = 0
 
     fff = open(fname, "wb")
 
-    while len(data)>0:
-        ret = decompress(data[:chunks],fff)
+    while len(data) > 0:
+        ret = decompress(data[:chunks], fff)
         if len(data) < chunks:
             if ret == 0:
                 data = ""
             else:
                 data = data[-ret:]
-            ret = decompress(data[:chunks],fff,limit=0)
+            ret = decompress(data[:chunks], fff, limit=0)
             if ret == 0:
                 data = ""
             else:
@@ -227,29 +232,29 @@ def decompress_all(data,fname,chunks=0x10000):
 
 
 def decompress(data, fff, limit=16):
-    global window,wchar
-    out=""
+    global window, wchar
+    out = bytearray()
 
-    while len(data)>limit:
-        comp=ord(data[0])
-        data=data[1:]
+    while len(data) > limit:
+        comp = data[0]
+        data = data[1:]
 
-        for i in xrange(8):
+        for i in range(8):
             if limit == 0:
                 if len(data) == 0:
                     break
-            if ((comp>>(7-i))&0x1) == 1:
-                out += data[0]
+            if ((comp >> (7 - i)) & 0x1) == 1:
+                out.append(data[0] & 0xff)
                 window[wchar] = data[0]
-                wchar = (wchar+1)%0x1000
+                wchar = (wchar + 1) % 0x1000
                 data = data[1:]
             else:
-                x = (ord(data[0])>>4)+3
-                ptr = wchar - (ord(data[1]) + ((ord(data[0])&0xf)<<8)) - 1
-                for k in xrange(x):
-                    out += window[(ptr+k)&0xfff]
-                    window[wchar] = window[(ptr+k)&0xfff]
-                    wchar = (wchar+1)%0x1000
+                x = (data[0] >> 4) + 3
+                ptr = wchar - (data[1] + ((data[0] & 0xf) << 8)) - 1
+                for k in range(x):
+                    out.append(window[(ptr + k) & 0xfff])
+                    window[wchar] = window[(ptr + k) & 0xfff]
+                    wchar = (wchar + 1) % 0x1000
                 data = data[2:]
 
     fff.write(out)
@@ -278,11 +283,11 @@ def compress(data):
                 off -= 1
 
         if off == -1:
-            mark |= (1<<(7-oc))
+            mark |= (1 << (7-oc))
             tmp_buff += data[current_off]
             current_off += 1
         else:
-            special = (((k-3)<<12) | ((-off-1)&0xfff)) &0xffff
+            special = (((k - 3) << 12) | ((-off-1) & 0xfff)) & 0xffff
             tmp_buff += pack(">H", special)
             current_off += k
         oc += 1
@@ -294,7 +299,7 @@ def compress(data):
             mark = 0
 
     while oc < 8:
-        mark |= (1<<(7-oc))
+        mark |= (1 << (7-oc))
         oc += 1
     outbuff += chr(mark) + tmp_buff
 

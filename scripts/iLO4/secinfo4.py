@@ -37,35 +37,6 @@ class MapEntry(LittleEndianStructure):
 
 
 
-class BssEntry(LittleEndianStructure):
-
-    _fields_ = [
-        ("base", c_uint32),
-        ("init_value", c_uint32),
-        ("size", c_uint32),
-    ]
-
-    def dump(self, name=''):
-        print "  memory area at 0x%08x - size 0x%08x - init value 0x%02x - \"%s\"" % (
-            self.base, self.size,  self.init_value, name)
-
-
-
-def make_segment(base, size, name):
-    s = idc.get_segm_by_sel(base)
-    if not s == 0xffffffff:
-        return
-
-    s = idaapi.segment_t()
-    s.startEA = base
-    s.endEA = base+size
-    s.sel = 0
-    s.bitness = 1
-    s.comb = idaapi.scPub
-    idaapi.add_segm_ex(s, name.strip('.').upper(), "", idaapi.ADDSEG_NOSREG|idaapi.ADDSEG_SPARSE)
-
-
-
 print "> parsing .secinfo entries:\n"
 
 sid  = GetStrucIdByName('MAP_ENTRY')
