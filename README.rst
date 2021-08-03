@@ -306,6 +306,105 @@ and  ``dissection.rb`` scripts can be used in the same way as for ``iLO4`` to
 extract the ``Integrity`` applicative image.
 
 
+Firmware encryption
+*******************
+
+Starting with ``iLO5`` verions ``2.x``, newer firmware are encrypted. The
+external enveloppe can be removed using the script ``ilo5_fw_decrypt.py``.
+
+::
+
+    >python ilo5_fw_decrypt.py --infile ilo5_235.bin
+    [+] input file: "ilo5_235.bin"
+    [+] skipping HP Signed File fingerprint (2088 bytes)
+    [+] loading RSA pem ("rsa_private_key_ilo5.asc")
+    > key size: 4096
+    [+] aes key material
+    > aes key: c2447180a96f6ec4b23ed5539a63548118573ccfb9866f5cacf8f13c42c5acbe
+    > aes iv: d13dcf4b12248561479488ad
+    --
+
+    [+] decrypting
+    > ok
+    [+] writing output file "ilo5_235.clear.bin":
+
+               ┌───────────────  firmware header  ───────────────┬──────────────────┐
+    0x00000000 │ 6e 65 62 61 39 20 30 2e 31 30 2e 31 33 00 00 00 │ neba9 0.10.13... │
+    0x00000010 │ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 │ ................ │
+    0x00000020 │ 1a 41 dd 4e 02 00 00 00 05 00 01 00 04 00 00 00 │ .A.N............ │
+    0x00000030 │ 00 00 00 00 00 00 00 00 50 8f 61 6b 00 00 00 00 │ ........P.ak.... │
+    0x00000040 │ 44 56 00 00 fe 10 5e d7 44 56 00 00 44 56 00 00 │ DV....^.DV..DV.. │
+    0x00000050 │ ff ff ff ff 00 00 00 00 02 00 00 00 2b 04 f2 81 │ ............+... │
+    0x00000060 │ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 │ ................ │
+    0x00000070 │ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 │ ................ │
+    0x00000080 │ 43 6f 70 79 72 69 67 68 74 20 32 30 31 39 20 48 │ Copyright 2019 H │
+    0x00000090 │ 65 77 6c 65 74 74 20 50 61 63 6b 61 72 64 20 45 │ ewlett Packard E │
+    0x000000a0 │ 6e 74 65 72 70 72 69 73 65 20 44 65 76 65 6c 6f │ nterprise Develo │
+    0x000000b0 │ 70 6d 65 6e 74 2c 20 4c 50 00 00 00 00 00 00 00 │ pment, LP....... │
+    0x000000c0 │ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 │ ................ │
+    0x000000d0 │ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 │ ................ │
+    0x000000e0 │ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 │ ................ │
+    0x000000f0 │ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 │ ................ │
+               └─────────────────────────────────────────────────┴──────────────────┘
+    [!] done captain
+
+
+One can then proceed to the extraction of the various firmware components
+using ``ilo5_extract.py``. The main userland image is also encrypted.
+Depending on the version, different private keys are used. The script
+``ilo5_image_decrypt.py`` comes with some private keys extracted for versions
+``2.3x`` and ``2.41``.
+
+
+::
+
+    >python ilo5_image_decrypt.py --rawfile elf_secure_241.raw --hdrfile elf_secure_241.hdr
+    [+] loading header file elf_secure_241.raw
+    > version string: 2.41
+    [+] loading elf_secure_241.raw
+    [+] ec pub key
+    > pub.pointQ.x: 0x484ed202be9af305af716e7eef2d8b00c6ceba7337ed980a4af96079d06e4b810c15451ba82b9ff10cd830b30376ee39
+    > pub.pointQ.y: 0x9dd95b116424f44b0e23776e3ed85fa46b76b4922047f993f450ec89134bb7ea0770eaf851b04fa0e074e813ece4df4d
+    --
+    [+] ec priv key
+    > priv.pointQ.x: 0xcf1093db93ad3bb9bb7050e88f417e7b054c37b02b01120318cd88faf5e3b957fa6fa15f64c7cd6d84bdd4e88cac6ea8
+    > priv.pointQ.y: 0xb1f8f0bd675d05e7e0463823f2f30e2d85f3b75302af65e892451236baff9e15b76a3be2f5d39c37b08f6c65ee14203c
+    > priv.d: 0xffa8193746dd557afe519993d8c18de66556675d840970265bfa9ba870a2cd84ff2a45d656240631cf91bdbf767c6beb
+    --
+
+    [+] shared secret:
+    6c20dad5c5751a8ce7b6e012c3fbd5198c142edb9a52bf203a3102d783cbc8c7dd28bcac5739b62922b36e928daae51c
+    --
+
+    [+] aes key material
+    > aes key: f16f2fa26032cc4de5c9c74d889981b54759f40add797329befaae36067878ea548a6f6a7edae2aae8f877054cfa54c0
+    > aes iv: cf12bc3b76d5a386c9f74332
+    --
+
+    [+] decrypting
+    > ok
+               ┌───────────────  firmware header  ───────────────┬──────────────────┐
+    0x00000000 │ 32 2e 34 31 2e 30 32 00 00 00 00 00 00 00 00 00 │ 2.41.02......... │
+    0x00000010 │ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 │ ................ │
+    0x00000020 │ 1a 41 dd 4e 02 00 00 00 00 00 21 00 05 00 00 00 │ .A.N......!..... │
+    0x00000030 │ 01 00 00 00 00 00 00 00 b5 11 00 00 00 00 00 00 │ ................ │
+    0x00000040 │ 05 60 ff 00 24 e0 44 c7 05 60 ff 00 88 ec e8 01 │ .`..$.D..`...... │
+    0x00000050 │ ff ff ff ff 00 00 00 00 01 00 00 00 17 a6 e3 b6 │ ................ │
+    0x00000060 │ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 │ ................ │
+    0x00000070 │ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 │ ................ │
+    0x00000080 │ 43 6f 70 79 72 69 67 68 74 20 32 30 32 31 20 48 │ Copyright 2021 H │
+    0x00000090 │ 65 77 6c 65 74 74 20 50 61 63 6b 61 72 64 20 45 │ ewlett Packard E │
+    0x000000a0 │ 6e 74 65 72 70 72 69 73 65 20 44 65 76 65 6c 6f │ nterprise Develo │
+    0x000000b0 │ 70 6d 65 6e 74 2c 20 4c 50 00 00 00 00 00 00 00 │ pment, LP....... │
+    0x000000c0 │ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 │ ................ │
+    0x000000d0 │ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 │ ................ │
+    0x000000e0 │ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 │ ................ │
+    0x000000f0 │ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 │ ................ │
+               └─────────────────────────────────────────────────┴──────────────────┘
+
+
+
+
 Firmware backdooring
 ********************
 
