@@ -199,6 +199,12 @@ system-on-chip(SOC).
 
 
 
+Black Hat USA 2021
+******************
+
+This talk goes back to the research we presented at SSTIC 2021, with more
+details given on some OS-level features and exploitation tricks though. Also,
+slides[21]_ are in English.
 
 
 
@@ -549,6 +555,7 @@ References
 .. [18] https://airbus-seclab.github.io/ilo/SSTIC2021-Slides-hpe_ilo_5_security_go_home_cryptoprocessor_youre_drunk-gazet_perigaud_czarny.pdf
 .. [19] https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbhf04121en_us
 .. [20] https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbhf04133en_us
+.. [21] https://airbus-seclab.github.io/ilo/BHUSA2021-Slides-hpe_ilo_5_security_go_home_cryptoprocessor_youre_drunk-gazet_perigaud_czarny.pdf
 .. [GPLv2] https://github.com/airbus-seclab/ilo4_toolbox/blob/master/COPYING
 .. _here: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/RECONBRX2018-Slides-Subverting_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
 .. _location: https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/ilo/SSTIC2018-Slides-EN-Backdooring_your_server_through_its_BMC_the_HPE_iLO4_case-perigaud-gazet-czarny.pdf
