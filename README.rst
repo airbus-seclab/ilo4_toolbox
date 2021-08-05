@@ -204,7 +204,7 @@ Black Hat USA 2021
 
 This talk goes back to the research we presented at SSTIC 2021, with more
 details given on some OS-level features and exploitation tricks though. Also,
-slides[21]_ are in English.
+the slides [21]_ are in English.
 
 
 
