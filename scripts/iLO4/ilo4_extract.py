@@ -24,7 +24,7 @@ IMG_HDR_SIZE = 0x440
 
 
 if len(sys.argv) != 3:
-    print "usage: %s <filename> <outdir>"
+    print "usage: %s <filename> <outdir>" % sys.argv[0]
     sys.exit(1)
 
 filename = sys.argv[1]
