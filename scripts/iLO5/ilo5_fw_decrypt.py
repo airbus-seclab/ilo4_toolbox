@@ -40,7 +40,7 @@ RSA_FILE = 'rsa_private_key_ilo5.asc'
 
 
 def pem_password_cb():
-    return struct.pack("L" * 8, *list(x ^ y for x, y in zip(KEY_MASK, HW_KEY)))
+    return struct.pack("<LLLLLLLL", *list(x ^ y for x, y in zip(KEY_MASK, HW_KEY)))
 
 
 def load_private_key():
